@@ -210,6 +210,27 @@
       ],
       "weight": 380,
       "categoryId": 2
+    },
+    {
+      "url": "bbq_deluxe",
+      "productName": "BBQ Делюкс",
+      "ingredients": [
+        26,
+        27,
+        6,
+        16,
+        7,
+        1,
+        2,
+        4
+      ],
+      "price": 172.99,
+      "images": [
+        "img/pizza/legend/bbq_deluxe_short.jpg",
+        "img/pizza/legend/bbq_deluxe_full.jpg"
+      ],
+      "weight": 389,
+      "categoryId": 2
     }
   ],
   "productsCategories": [
@@ -364,6 +385,16 @@
       //25
       "title": "Халапеньо",
       "image": "img/ingredients/jalapeno.jpg"
+    },
+    {
+      //26
+      "title": "Фрикадельки",
+      "image": "img/ingredients/meatballs.png"
+    },
+    {
+      //27
+      "title": "Пармезан",
+      "image": "img/ingredients/parmezan.png"
     }
   ],
   "recommendations": [
