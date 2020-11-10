@@ -150,6 +150,26 @@
       ],
       "weight": 346,
       "categoryId": 1
+    },
+    {
+      "url": "toskana",
+      "productName": "Тоскана",
+      "ingredients": [
+        20,
+        21,
+        22,
+        1,
+        17,
+        3,
+        4
+      ],
+      "price": 172.99,
+      "images": [
+        "img/pizza/legend/toskana_short.jpg",
+        "img/pizza/legend/toskana_full.jpg"
+      ],
+      "weight": 374,
+      "categoryId": 2
     }
   ],
   "productsCategories": [
@@ -274,6 +294,21 @@
       //19
       "title": "Ананас",
       "image": "img/ingredients/ananas.png"
+    },
+    {
+      //20
+      "title": "Фета",
+      "image": "img/ingredients/feta.jpg"
+    },
+    {
+      //21
+      "title": "Помидоры черри",
+      "image": "img/ingredients/cherry-tomatoes.png"
+    },
+    {
+      //22
+      "title": "Шпинат",
+      "image": "img/ingredients/shpinat.png"
     }
   ],
   "recommendations": [
