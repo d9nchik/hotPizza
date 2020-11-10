@@ -70,6 +70,48 @@
       ],
       "weight": 340,
       "categoryId": 0
+    },
+    {
+      "url": "country",
+      "productName": "Кантри",
+      "ingredients": [
+        6,
+        11,
+        12,
+        7,
+        1,
+        14,
+        13,
+        4
+      ],
+      "price": 152.99,
+      "images": [
+        "img/pizza/branded/country_short.jpg",
+        "img/pizza/branded/country_full.jpg"
+      ],
+      "weight": 380,
+      "categoryId": 1
+    },
+    {
+      "url": "vegetable_extravaganza",
+      "productName": "Овощная Феерия",
+      "ingredients": [
+        15,
+        6,
+        16,
+        7,
+        1,
+        9,
+        10,
+        4
+      ],
+      "price": 152.99,
+      "images": [
+        "img/pizza/branded/vegetable_extravaganza_short.jpg",
+        "img/pizza/branded/vegetable_extravaganza_full.jpg"
+      ],
+      "weight": 405,
+      "categoryId": 1
     }
   ],
   "productsCategories": [
@@ -149,6 +191,36 @@
       //10
       "title": "Соус Domino's",
       "image": "img/ingredients/dominos_souse.png"
+    },
+    {
+      //11
+      "title": "Бекон",
+      "image": "img/ingredients/bacon.jpg"
+    },
+    {
+      //12
+      "title": "Ветчина",
+      "image": "img/ingredients/ham.jpg"
+    },
+    {
+      //13
+      "title": "Соус Чесночный",
+      "image": "img/ingredients/garlic_sause.png"
+    },
+    {
+      //14
+      "title": "Огурцы маринованные",
+      "image": "img/ingredients/pickled_cucumber.jpg"
+    },
+    {
+      //15
+      "title": "Оливки",
+      "image": "img/ingredients/olives.jpg"
+    },
+    {
+      //16
+      "title": "Болгарский перец",
+      "image": "img/ingredients/bolgar_pepper.png"
     }
   ],
   "recommendations": [
