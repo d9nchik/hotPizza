@@ -1,0 +1,138 @@
+{
+  "products": [
+    {
+      "url": "peperoni_bluz",
+      "productName": "Пепперони Блюз",
+      "ingredients": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "price": 124.99,
+      "images": [
+        "img/pizza/classic/peperoni_bluz_short.jpg",
+        "img/pizza/classic/peperoni_bluz_full.jpg"
+      ],
+      "weight": 296,
+      "categoryId": 0
+    },
+    {
+      "url": "texas",
+      "productName": "Техас",
+      "ingredients": [
+        5,
+        6,
+        7,
+        8,
+        1,
+        4
+      ],
+      "price": 92.99,
+      "images": [
+        "img/pizza/classic/texas_short.jpg",
+        "img/pizza/classic/texas_full.jpg"
+      ],
+      "weight": 378,
+      "categoryId": 0
+    },
+    {
+      "url": "tomato_piperony",
+      "productName": "Пепперони с томатами",
+      "ingredients": [
+        9,
+        1,
+        2,
+        4
+      ],
+      "price": 92.99,
+      "images": [
+        "img/pizza/classic/tomato_peperony_short.jpg",
+        "img/pizza/classic/tomato_peperony_full.jpg"
+      ],
+      "weight": 350,
+      "categoryId": 0
+    }
+  ],
+  "productsCategories": [
+    {
+      "url": "classic",
+      "name": "Классические",
+      "description": "Классическая пицца выпекается в специальной дровяной печи, которая называется помпейской и имеет форму свода в виде полусферы."
+    },
+    {
+      "url": "branded",
+      "name": "Фирменные",
+      "description": "блюдо с большим количеством мяса, овощей и зелени. В состав рецептуры входят ломтики бекона, курицы-гриль, острые итальянские колбаски пепперони, ветчина. Паприка, зелень и сыр моцарелла дополняют восхитительную мясную композицию."
+    },
+    {
+      "url": "legend",
+      "name": "Легенды",
+      "description": "это национальное итальянское блюдо, представляющее собой круглую открытую лепешку, покрытую расплавленным сыром (обычно моцарелла) и томатами. Сыр – это, безусловно, основной ингредиент пиццы."
+    },
+    {
+      "url": "premium",
+      "name": "Премиум",
+      "description": "Отборные продукты в сочитании с мастерством повара найдет поклоников даже сред очень больших капризов."
+    }
+  ],
+  "ingredients": [
+    {
+      //0
+      "title": "Бергадер Блю",
+      "image": "img/ingredients/barhader_blu.png"
+    },
+    {
+      //1
+      "title": "Моцарелла",
+      "image": "img/ingredients/mozzarella.png"
+    },
+    {
+      //2
+      "title": "Пепперони",
+      "image": "img/ingredients/pepperony.jpg"
+    },
+    {
+      //3
+      "title": "Соус Альфредо",
+      "image": "img/ingredients/alfredo.jpg"
+    },
+    {
+      //4
+      "title": "Соус Барбекю",
+      "image": "img/ingredients/bbq_souse.png"
+    },
+    {
+      //5
+      "title": "Кукуруза",
+      "image": "img/ingredients/corn.jpg"
+    },
+    {
+      //6
+      "title": "Лук",
+      "image": "img/ingredients/onion.jpg"
+    },
+    {
+      //7
+      "title": "Грибы",
+      "image": "img/ingredients/mushrooms.png"
+    },
+    {
+      //8
+      "title": "Колбаски баварские",
+      "image": "img/ingredients/hunt_sausage.jpg"
+    },
+    {
+      //9
+      "title": "Помидоры",
+      "image": "img/ingredients/tomato.png"
+    }
+  ],
+  "recommendations": [
+    2,
+    5,
+    7,
+    11
+  ]
+}
