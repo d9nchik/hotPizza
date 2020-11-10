@@ -251,6 +251,28 @@
       ],
       "weight": 338,
       "categoryId": 3
+    },
+    {
+      "url": "spinach_feta",
+      "productName": "Шпинат и Фета",
+      "ingredients": [
+        20,
+        15,
+        16,
+        7,
+        1,
+        9,
+        3,
+        22,
+        4
+      ],
+      "price": 187.99,
+      "images": [
+        "img/pizza/premium/spinach_feta_short.jpg",
+        "img/pizza/premium/spinach_feta_full.jpg"
+      ],
+      "weight": 405,
+      "categoryId": 3
     }
   ],
   "productsCategories": [
