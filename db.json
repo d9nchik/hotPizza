@@ -343,152 +343,122 @@
   ],
   "ingredients": [
     {
-      //0
       "title": "Бергадер Блю",
       "image": "img/ingredients/barhader_blu.png"
     },
     {
-      //1
       "title": "Моцарелла",
       "image": "img/ingredients/mozzarella.png"
     },
     {
-      //2
       "title": "Пепперони",
       "image": "img/ingredients/pepperony.jpg"
     },
     {
-      //3
       "title": "Соус Альфредо",
       "image": "img/ingredients/alfredo.jpg"
     },
     {
-      //4
       "title": "Соус Барбекю",
       "image": "img/ingredients/bbq_souse.png"
     },
     {
-      //5
       "title": "Кукуруза",
       "image": "img/ingredients/corn.jpg"
     },
     {
-      //6
       "title": "Лук",
       "image": "img/ingredients/onion.jpg"
     },
     {
-      //7
       "title": "Грибы",
       "image": "img/ingredients/mushrooms.png"
     },
     {
-      //8
       "title": "Колбаски баварские",
       "image": "img/ingredients/hunt_sausage.jpg"
     },
     {
-      //9
       "title": "Помидоры",
       "image": "img/ingredients/tomato.png"
     },
     {
-      //10
       "title": "Соус Domino's",
       "image": "img/ingredients/dominos_souse.png"
     },
     {
-      //11
       "title": "Бекон",
       "image": "img/ingredients/bacon.jpg"
     },
     {
-      //12
       "title": "Ветчина",
       "image": "img/ingredients/ham.jpg"
     },
     {
-      //13
       "title": "Соус Чесночный",
       "image": "img/ingredients/garlic_sause.png"
     },
     {
-      //14
       "title": "Огурцы маринованные",
       "image": "img/ingredients/pickled_cucumber.jpg"
     },
     {
-      //15
       "title": "Оливки",
       "image": "img/ingredients/olives.jpg"
     },
     {
-      //16
       "title": "Болгарский перец",
       "image": "img/ingredients/bolgar_pepper.png"
     },
     {
-      //17
       "title": "Курица",
       "image": "img/ingredients/chicken.jpg"
     },
     {
-      //18
       "title": "Cоус Карри",
       "image": "img/ingredients/curry_sause.jpg"
     },
     {
-      //19
       "title": "Ананас",
       "image": "img/ingredients/ananas.png"
     },
     {
-      //20
       "title": "Фета",
       "image": "img/ingredients/feta.jpg"
     },
     {
-      //21
       "title": "Помидоры черри",
       "image": "img/ingredients/cherry-tomatoes.png"
     },
     {
-      //22
       "title": "Шпинат",
       "image": "img/ingredients/shpinat.png"
     },
     {
-      //23
       "title": "Горчица",
       "image": "img/ingredients/mustard.png"
     },
     {
-      //24
       "title": "Сосиски белые",
       "image": "img/ingredients/white_sausages.png"
     },
     {
-      //25
       "title": "Халапеньо",
       "image": "img/ingredients/jalapeno.jpg"
     },
     {
-      //26
       "title": "Фрикадельки",
       "image": "img/ingredients/meatballs.png"
     },
     {
-      //27
       "title": "Пармезан",
       "image": "img/ingredients/parmezan.png"
     },
     {
-      //28
       "title": "Бергадер Блю",
       "image": "img/ingredients/bergader_blue.png"
     },
     {
-      //29
       "title": "Чеддер",
       "image": "img/ingredients/cheder.jpg"
     }
