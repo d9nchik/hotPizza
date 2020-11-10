@@ -131,6 +131,25 @@
       ],
       "weight": 383,
       "categoryId": 1
+    },
+    {
+      "url": "paparazzi",
+      "productName": "ПапараZZи",
+      "ingredients": [
+        15,
+        1,
+        2,
+        9,
+        3,
+        4
+      ],
+      "price": 152.99,
+      "images": [
+        "img/pizza/branded/paparazzi_short.jpg",
+        "img/pizza/branded/paparazzi_full.jpg"
+      ],
+      "weight": 346,
+      "categoryId": 1
     }
   ],
   "productsCategories": [
