@@ -294,6 +294,29 @@
       ],
       "weight": 391,
       "categoryId": 3
+    },
+    {
+      "url": "extravaganza",
+      "productName": "Экстраваганzza",
+      "ingredients": [
+        26,
+        15,
+        6,
+        16,
+        12,
+        7,
+        1,
+        2,
+        4,
+        10
+      ],
+      "price": 187.99,
+      "images": [
+        "img/pizza/premium/extravaganza_short.jpg",
+        "img/pizza/premium/extravaganza_full.jpg"
+      ],
+      "weight": 470,
+      "categoryId": 3
     }
   ],
   "productsCategories": [
