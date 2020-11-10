@@ -53,6 +53,23 @@
       ],
       "weight": 350,
       "categoryId": 0
+    },
+    {
+      "url": "tony_piperony",
+      "productName": "Тони Пепперони",
+      "ingredients": [
+        10,
+        1,
+        2,
+        4
+      ],
+      "price": 124.99,
+      "images": [
+        "img/pizza/classic/tony_peperony_short.jpg",
+        "img/pizza/classic/tony_peperony_full.jpg"
+      ],
+      "weight": 340,
+      "categoryId": 0
     }
   ],
   "productsCategories": [
@@ -127,6 +144,11 @@
       //9
       "title": "Помидоры",
       "image": "img/ingredients/tomato.png"
+    },
+    {
+      //10
+      "title": "Соус Domino's",
+      "image": "img/ingredients/dominos_souse.png"
     }
   ],
   "recommendations": [
