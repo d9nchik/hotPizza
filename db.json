@@ -190,6 +190,26 @@
       ],
       "weight": 424,
       "categoryId": 2
+    },
+    {
+      "url": "spicy",
+      "productName": "Спайси",
+      "ingredients": [
+        25,
+        11,
+        1,
+        2,
+        9,
+        10,
+        4
+      ],
+      "price": 172.99,
+      "images": [
+        "img/pizza/legend/spicy_short.jpg",
+        "img/pizza/legend/spicy_full.jpg"
+      ],
+      "weight": 380,
+      "categoryId": 2
     }
   ],
   "productsCategories": [
@@ -339,6 +359,11 @@
       //24
       "title": "Сосиски белые",
       "image": "img/ingredients/white_sausages.png"
+    },
+    {
+      //25
+      "title": "Халапеньо",
+      "image": "img/ingredients/jalapeno.jpg"
     }
   ],
   "recommendations": [
