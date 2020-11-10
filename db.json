@@ -231,6 +231,26 @@
       ],
       "weight": 389,
       "categoryId": 2
+    },
+    {
+      "url": "five_cheese",
+      "productName": "Пять Сыров",
+      "ingredients": [
+        20,
+        27,
+        1,
+        3,
+        28,
+        29,
+        4
+      ],
+      "price": 187.99,
+      "images": [
+        "img/pizza/premium/five_cheese_short.jpg",
+        "img/pizza/premium/five_cheese_full.jpg"
+      ],
+      "weight": 338,
+      "categoryId": 3
     }
   ],
   "productsCategories": [
@@ -395,6 +415,16 @@
       //27
       "title": "Пармезан",
       "image": "img/ingredients/parmezan.png"
+    },
+    {
+      //28
+      "title": "Бергадер Блю",
+      "image": "img/ingredients/bergader_blue.png"
+    },
+    {
+      //29
+      "title": "Чеддер",
+      "image": "img/ingredients/cheder.jpg"
     }
   ],
   "recommendations": [
