@@ -112,6 +112,24 @@
       ],
       "weight": 405,
       "categoryId": 1
+    },
+    {
+      "url": "curry",
+      "productName": "Карри",
+      "ingredients": [
+        17,
+        18,
+        19,
+        1,
+        6
+      ],
+      "price": 152.99,
+      "images": [
+        "img/pizza/branded/curry_short.jpg",
+        "img/pizza/branded/curry_full.jpg"
+      ],
+      "weight": 383,
+      "categoryId": 1
     }
   ],
   "productsCategories": [
@@ -221,6 +239,21 @@
       //16
       "title": "Болгарский перец",
       "image": "img/ingredients/bolgar_pepper.png"
+    },
+    {
+      //17
+      "title": "Курица",
+      "image": "img/ingredients/chicken.jpg"
+    },
+    {
+      //18
+      "title": "Cоус Карри",
+      "image": "img/ingredients/curry_sause.jpg"
+    },
+    {
+      //19
+      "title": "Ананас",
+      "image": "img/ingredients/ananas.png"
     }
   ],
   "recommendations": [
