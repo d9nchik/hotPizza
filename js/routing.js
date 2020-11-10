@@ -18,7 +18,10 @@ class Router {
 
     openLink(link) {
         location.hash = link;
-        this.#links[link]();
+        var value = this.#links[link];
+        if (value != null) {
+            value();
+        }
     }
 
 }
