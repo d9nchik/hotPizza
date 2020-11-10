@@ -170,6 +170,26 @@
       ],
       "weight": 374,
       "categoryId": 2
+    },
+    {
+      "url": "munich_de_lux",
+      "productName": "Мюнхенская DeLUX",
+      "ingredients": [
+        12,
+        23,
+        24,
+        8,
+        1,
+        9,
+        4
+      ],
+      "price": 172.99,
+      "images": [
+        "img/pizza/legend/munich_de_lux_short.jpg",
+        "img/pizza/legend/munich_de_lux_full.jpg"
+      ],
+      "weight": 424,
+      "categoryId": 2
     }
   ],
   "productsCategories": [
@@ -309,6 +329,16 @@
       //22
       "title": "Шпинат",
       "image": "img/ingredients/shpinat.png"
+    },
+    {
+      //23
+      "title": "Горчица",
+      "image": "img/ingredients/mustard.png"
+    },
+    {
+      //24
+      "title": "Сосиски белые",
+      "image": "img/ingredients/white_sausages.png"
     }
   ],
   "recommendations": [
