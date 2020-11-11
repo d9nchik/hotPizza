@@ -16,6 +16,13 @@
         "img/pizza/classic/peperoni_bluz_full.jpg"
       ],
       "weight": 296,
+      "relatedProductIds": [
+        15,
+        9,
+        1,
+        8,
+        2
+      ],
       "categoryId": 0
     },
     {
@@ -35,6 +42,13 @@
         "img/pizza/classic/texas_full.jpg"
       ],
       "weight": 378,
+      "relatedProductIds": [
+        7,
+        11,
+        9,
+        14,
+        10
+      ],
       "categoryId": 0
     },
     {
@@ -52,6 +66,14 @@
         "img/pizza/classic/tomato_peperony_full.jpg"
       ],
       "weight": 350,
+      "relatedProductIds": [
+        5,
+        3,
+        8,
+        1,
+        14
+      ],
+      ,
       "categoryId": 0
     },
     {
@@ -69,6 +91,13 @@
         "img/pizza/classic/tony_peperony_full.jpg"
       ],
       "weight": 340,
+      "relatedProductIds": [
+        15,
+        13,
+        7,
+        1,
+        14
+      ],
       "categoryId": 0
     },
     {
@@ -90,6 +119,13 @@
         "img/pizza/branded/country_full.jpg"
       ],
       "weight": 380,
+      "relatedProductIds": [
+        10,
+        14,
+        12,
+        6,
+        13
+      ],
       "categoryId": 1
     },
     {
@@ -111,6 +147,13 @@
         "img/pizza/branded/vegetable_extravaganza_full.jpg"
       ],
       "weight": 405,
+      "relatedProductIds": [
+        9,
+        8,
+        11,
+        14,
+        13
+      ],
       "categoryId": 1
     },
     {
@@ -131,6 +174,13 @@
       ],
       "isNew": true,
       "weight": 383,
+      "relatedProductIds": [
+        7,
+        5,
+        15,
+        10,
+        13
+      ],
       "categoryId": 1
     },
     {
@@ -150,6 +200,13 @@
         "img/pizza/branded/paparazzi_full.jpg"
       ],
       "weight": 346,
+      "relatedProductIds": [
+        9,
+        0,
+        15,
+        3,
+        6
+      ],
       "categoryId": 1
     },
     {
@@ -170,6 +227,13 @@
         "img/pizza/legend/toskana_full.jpg"
       ],
       "weight": 374,
+      "relatedProductIds": [
+        15,
+        10,
+        13,
+        1,
+        4
+      ],
       "categoryId": 2
     },
     {
@@ -190,6 +254,13 @@
         "img/pizza/legend/munich_de_lux_full.jpg"
       ],
       "weight": 424,
+      "relatedProductIds": [
+        15,
+        13,
+        2,
+        10,
+        12
+      ],
       "categoryId": 2
     },
     {
@@ -211,6 +282,13 @@
       ],
       "spicy": true,
       "weight": 380,
+      "relatedProductIds": [
+        15,
+        11,
+        14,
+        12,
+        3
+      ],
       "categoryId": 2
     },
     {
@@ -232,6 +310,13 @@
         "img/pizza/legend/bbq_deluxe_full.jpg"
       ],
       "weight": 389,
+      "relatedProductIds": [
+        1,
+        9,
+        10,
+        12,
+        8
+      ],
       "categoryId": 2
     },
     {
@@ -252,6 +337,13 @@
         "img/pizza/premium/five_cheese_full.jpg"
       ],
       "weight": 338,
+      "relatedProductIds": [
+        2,
+        7,
+        3,
+        0,
+        10
+      ],
       "categoryId": 3
     },
     {
@@ -274,6 +366,13 @@
         "img/pizza/premium/spinach_feta_full.jpg"
       ],
       "weight": 405,
+      "relatedProductIds": [
+        10,
+        6,
+        2,
+        9,
+        3
+      ],
       "categoryId": 3
     },
     {
@@ -295,6 +394,13 @@
         "img/pizza/premium/mizza_full.jpg"
       ],
       "weight": 391,
+      "relatedProductIds": [
+        9,
+        3,
+        13,
+        1,
+        6
+      ],
       "categoryId": 3
     },
     {
@@ -319,6 +425,13 @@
       ],
       "isNew": true,
       "weight": 470,
+      "relatedProductIds": [
+        7,
+        3,
+        6,
+        8,
+        1
+      ],
       "categoryId": 3
     }
   ],
