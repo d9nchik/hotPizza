@@ -208,6 +208,7 @@
         "img/pizza/legend/spicy_short.jpg",
         "img/pizza/legend/spicy_full.jpg"
       ],
+      "spicy": true,
       "weight": 380,
       "categoryId": 2
     },
