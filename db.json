@@ -129,6 +129,7 @@
         "img/pizza/branded/curry_short.jpg",
         "img/pizza/branded/curry_full.jpg"
       ],
+      "isNew": true,
       "weight": 383,
       "categoryId": 1
     },
@@ -316,6 +317,7 @@
         "img/pizza/premium/extravaganza_short.jpg",
         "img/pizza/premium/extravaganza_full.jpg"
       ],
+      "isNew": true,
       "weight": 470,
       "categoryId": 3
     }
