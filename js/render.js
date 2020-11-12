@@ -10,7 +10,16 @@ function clearMain() {
     MAIN.innerHTML = '';
 }
 
-routing.openLink('');
+function showLoading(node) {
+    var center = document.createElement('div');
+    center.setAttribute('style', 'text-align: center;');
+    var loading = document.createElement('div');
+    loading.setAttribute('class', 'lds-dual-ring');
+    center.appendChild(loading);
+    node.appendChild(center);
+}
+
+showLoading(MAIN);
 
 promisedProducts.then((products) => {
     for (const product of products) {
@@ -66,6 +75,7 @@ promisedProducts.then((products) => {
                 'Вес: ' + weight + 'г';
             infoBlock.appendChild(weightNode);
 
+            //TODO: button should add to cart
             var priceNode = document.createElement('div');
             priceNode.innerHTML = '<button type="button" class="btn btn-outline-primary">\n' +
                 'Цена: ' + price + 'грн.' +
@@ -76,6 +86,10 @@ promisedProducts.then((products) => {
                 '</svg>\n' +
                 '        </button>';
             infoBlock.appendChild(priceNode);
+
+
         }
     }
-})
+});
+
+
