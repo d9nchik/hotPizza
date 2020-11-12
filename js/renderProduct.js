@@ -2,25 +2,7 @@ import {CART} from './cart.js';
 import {promisedIngredients, promisedProducts} from "./getJson.js";
 import {routing} from "./routing.js";
 
-promisedProducts.then((data) => console.log(data));
-promisedIngredients.then((data) => console.log(data));
-
-const MAIN = document.getElementsByTagName('main')[0];
-
-function clearMain() {
-    MAIN.innerHTML = '';
-}
-
-function showLoading(node) {
-    var center = document.createElement('div');
-    center.setAttribute('style', 'text-align: center;');
-    var loading = document.createElement('div');
-    loading.setAttribute('class', 'lds-dual-ring');
-    center.appendChild(loading);
-    node.appendChild(center);
-}
-
-showLoading(MAIN);
+import {MAIN, clearMain} from './renderHelp.js'
 
 promisedProducts.then((products) => {
     for (const product of products) {
