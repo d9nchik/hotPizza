@@ -3,8 +3,7 @@ class Router {
 
     constructor() {
         window.onhashchange = () => {
-            var path = location.hash.slice(1);
-            this.openLink(path);
+           this.refresh();
         }
     }
 
@@ -21,6 +20,14 @@ class Router {
         var value = this.links[link];
         if (value != null) {
             value();
+            this.opened = link;
+        }
+    }
+
+    refresh() {
+        var path = location.hash.slice(1);
+        if (this.link !== path) {
+            this.openLink(path);
         }
     }
 
