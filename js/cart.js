@@ -22,6 +22,9 @@ var cartProto = {
     },
 
     addToCart(index, quantity) {
+        if (!quantity || Number.isNaN(quantity = Number(quantity))) {
+            return;
+        }
         if (this[index] == null) {
             this[index] = 0;
         }

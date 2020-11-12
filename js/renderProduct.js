@@ -86,9 +86,7 @@ promisedProducts.then((products) => {
             var button = priceNode.firstChild;
             button.onclick = () => {
                 var howManyItems = prompt('Сколько пиц даного типа вы хотите купить?');
-                if (howManyItems && !Number.isNaN(Number(howManyItems))) {
-                    CART.addToCart(url, Number(howManyItems));
-                }
+                CART.addToCart(url, Number(howManyItems));
             };
             infoBlock.appendChild(priceNode);
 
