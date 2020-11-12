@@ -26,6 +26,7 @@ promisedProducts.then((products) => {
     for (const product of products) {
 
         routing.addLink(`product/${product.url}`, renderPage);
+        routing.refresh();
 
         function renderPage() {
             clearMain();
