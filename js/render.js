@@ -97,7 +97,7 @@ promisedProducts.then((products) => {
                 ingredients.forEach((number) => {
                     var element = document.createElement('div');
                     rowInInfoBlock.appendChild(element);
-                    element.setAttribute('class', 'col-lg-6 col-md-6 col-sm-12 container');
+                    element.setAttribute('class', 'col-sm-6 container');
                     var promisedIngredient = ingredientsPromised[number];
                     element.appendChild(document.createTextNode(promisedIngredient.title));
                     var img = document.createElement('img');
@@ -109,6 +109,35 @@ promisedProducts.then((products) => {
             });
 
 
+            var relatedProductHeader = document.createElement('h2');
+            relatedProductHeader.textContent = 'Похожие';
+            row.appendChild(relatedProductHeader);
+
+            const relatedProductsContainer = document.createElement('div');
+            row.appendChild(relatedProductsContainer);
+            relatedProductsContainer.setAttribute('class', 'row');
+            relatedProductIds.forEach((relatedProductId) => {
+                //FIXME: destructuring
+                var promisedProduct = products[relatedProductId];
+                var box = document.createElement('div');
+                box.setAttribute('class', 'col-lg-2 col-md-2 col-sm-12 d-md-flex justify-content-md-between flex-column mb-4');
+                relatedProductsContainer.appendChild(box);
+
+                var header = document.createElement('h3');
+                header.setAttribute('class', 'btn');
+                header.textContent = promisedProduct.productName;
+                box.appendChild(header);
+
+                var img = document.createElement('img');
+                box.appendChild(img);
+                img.setAttribute('src', promisedProduct.images[0]);
+                img.setAttribute('alt', promisedProduct.productName);
+                img.setAttribute('class', 'img-fluid justify-content-end btn');
+
+                box.onclick = () => {
+                    routing.openLink(`product/${promisedProduct.url}`);
+                }
+            })
         }
     }
 });
