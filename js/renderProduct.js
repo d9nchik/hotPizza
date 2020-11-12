@@ -8,7 +8,6 @@ promisedProducts.then((products) => {
     for (const product of products) {
 
         routing.addLink(`product/${product.url}`, renderPage);
-        routing.refresh();
 
         function renderPage() {
             clearMain();
@@ -68,6 +67,7 @@ promisedProducts.then((products) => {
                 '        </button>';
             var button = priceNode.firstChild;
             button.onclick = () => {
+                //FIXME: change to modal
                 var howManyItems = prompt('Сколько пиц даного типа вы хотите купить?');
                 CART.addToCart(url, Number(howManyItems));
             };

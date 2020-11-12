@@ -9,6 +9,7 @@ class Router {
 
     addLink(link, link_render) {
         this.links[link] = link_render;
+        this.refresh();
     }
 
     removeLink(link) {
