@@ -24,11 +24,8 @@ showLoading(MAIN);
 
 promisedProducts.then((products) => {
     for (const product of products) {
-        //TODO: inline
-        const url = product.url;
 
-
-        routing.addLink(`product/${url}`, renderPage);
+        routing.addLink(`product/${product.url}`, renderPage);
 
         function renderPage() {
             clearMain();
@@ -77,7 +74,6 @@ promisedProducts.then((products) => {
                 'Вес: ' + weight + 'г';
             infoBlock.appendChild(weightNode);
 
-            //TODO: button should add to cart
             var priceNode = document.createElement('div');
             priceNode.innerHTML = '<button type="button" class="btn btn-outline-primary">\n' +
                 'Цена: ' + price + 'грн.' +
@@ -107,12 +103,15 @@ promisedProducts.then((products) => {
                     var element = document.createElement('div');
                     rowInInfoBlock.appendChild(element);
                     element.setAttribute('class', 'col-sm-6 container');
-                    var promisedIngredient = ingredientsPromised[number];
-                    element.appendChild(document.createTextNode(promisedIngredient.title));
+                    var {
+                        title,
+                        image
+                    } = ingredientsPromised[number];
+                    element.appendChild(document.createTextNode(title));
                     var img = document.createElement('img');
                     element.appendChild(img);
-                    img.setAttribute('src', promisedIngredient.image);
-                    img.setAttribute('alt', promisedIngredient.title);
+                    img.setAttribute('src', image);
+                    img.setAttribute('alt', title);
                     img.setAttribute('class', 'img-fluid');
                 });
             });
@@ -126,25 +125,28 @@ promisedProducts.then((products) => {
             row.appendChild(relatedProductsContainer);
             relatedProductsContainer.setAttribute('class', 'row');
             relatedProductIds.forEach((relatedProductId) => {
-                //FIXME: destructuring
-                var promisedProduct = products[relatedProductId];
+                var {
+                    productName,
+                    images: [image],
+                    url
+                } = products[relatedProductId];
                 var box = document.createElement('div');
                 box.setAttribute('class', 'col-lg-3 col-md-3 col-sm-12 d-md-flex justify-content-md-between flex-column mb-1');
                 relatedProductsContainer.appendChild(box);
 
                 var header = document.createElement('h3');
                 header.setAttribute('class', 'btn');
-                header.textContent = promisedProduct.productName;
+                header.textContent = productName;
                 box.appendChild(header);
 
                 var img = document.createElement('img');
                 box.appendChild(img);
-                img.setAttribute('src', promisedProduct.images[0]);
-                img.setAttribute('alt', promisedProduct.productName);
+                img.setAttribute('src', image);
+                img.setAttribute('alt', productName);
                 img.setAttribute('class', 'img-fluid justify-content-end btn');
 
                 box.onclick = () => {
-                    routing.openLink(`product/${promisedProduct.url}`);
+                    routing.openLink(`product/${url}`);
                 }
             })
         }
