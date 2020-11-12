@@ -22,17 +22,16 @@ var cartProto = {
     },
 
     addToCart(index, quantity) {
-        this[index] = quantity;
+        if (this[index] == null) {
+            this[index] = 0;
+        }
+        this[index] += quantity;
         this.saveCart();
     },
 
     removeFromCart(index) {
         delete this[index];
         this.saveCart();
-    },
-
-    updateItemQuantity(index, quantity) {
-        this.addToCart(index, quantity);
     },
 
     clearCart() {

@@ -1,3 +1,4 @@
+import {CART} from './cart.js';
 import {promisedIngredients, promisedProducts} from "./getJson.js";
 import {routing} from "./routing.js";
 
@@ -33,6 +34,7 @@ promisedProducts.then((products) => {
             clearMain();
             //TODO: add special and spicy
             const {
+                url,
                 productName,
                 ingredients,
                 price,
@@ -85,6 +87,13 @@ promisedProducts.then((products) => {
                 '  <path d="M13 5a2 2 0 0 0 2 2V5h-2zM3 5a2 2 0 0 1-2 2V5h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 13a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>\n' +
                 '</svg>\n' +
                 '        </button>';
+            var button = priceNode.firstChild;
+            button.onclick = () => {
+                var howManyItems = prompt('Сколько пиц даного типа вы хотите купить?');
+                if (howManyItems && !Number.isNaN(Number(howManyItems))) {
+                    CART.addToCart(url, Number(howManyItems));
+                }
+            };
             infoBlock.appendChild(priceNode);
 
             promisedIngredients.then((ingredientsPromised) => {
