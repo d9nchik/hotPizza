@@ -27,7 +27,7 @@ class Router {
 
     refresh() {
         var path = location.hash.slice(1);
-        if (this.link !== path) {
+        if (this.opened !== path) {
             this.openLink(path);
         }
     }
