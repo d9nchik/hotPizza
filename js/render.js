@@ -65,7 +65,7 @@ promisedProducts.then((products) => {
 
             const infoBlock = document.createElement('div');
             row.appendChild(infoBlock);
-            infoBlock.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12');
+            infoBlock.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12 container');
             var weightNode = document.createElement('div');
             weightNode.innerHTML =
                 '          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calculator" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\n' +
@@ -86,6 +86,27 @@ promisedProducts.then((products) => {
                 '</svg>\n' +
                 '        </button>';
             infoBlock.appendChild(priceNode);
+
+            promisedIngredients.then((ingredientsPromised) => {
+                var rowInInfoBlock = document.createElement('div');
+                var header = document.createElement('h2');
+                infoBlock.appendChild(header);
+                header.innerHTML = 'Состав';
+                infoBlock.appendChild(rowInInfoBlock);
+                rowInInfoBlock.setAttribute('class', 'row');
+                ingredients.forEach((number) => {
+                    var element = document.createElement('div');
+                    rowInInfoBlock.appendChild(element);
+                    element.setAttribute('class', 'col-lg-6 col-md-6 col-sm-12 container');
+                    var promisedIngredient = ingredientsPromised[number];
+                    element.appendChild(document.createTextNode(promisedIngredient.title));
+                    var img = document.createElement('img');
+                    element.appendChild(img);
+                    img.setAttribute('src', promisedIngredient.image);
+                    img.setAttribute('alt', promisedIngredient.title);
+                    img.setAttribute('class', 'img-fluid');
+                });
+            });
 
 
         }
