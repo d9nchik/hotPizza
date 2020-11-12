@@ -1,5 +1,5 @@
 class Router {
-    #links = {};
+    links = {};
 
     constructor() {
         window.onhashchange = () => {
@@ -9,16 +9,16 @@ class Router {
     }
 
     addLink(link, link_render) {
-        this.#links[link] = link_render;
+        this.links[link] = link_render;
     }
 
     removeLink(link) {
-        delete this.#links[link];
+        delete this.links[link];
     }
 
     openLink(link) {
         location.hash = link;
-        var value = this.#links[link];
+        var value = this.links[link];
         if (value != null) {
             value();
         }
