@@ -120,7 +120,7 @@ promisedProducts.then((products) => {
                 //FIXME: destructuring
                 var promisedProduct = products[relatedProductId];
                 var box = document.createElement('div');
-                box.setAttribute('class', 'col-lg-2 col-md-2 col-sm-12 d-md-flex justify-content-md-between flex-column mb-4');
+                box.setAttribute('class', 'col-lg-3 col-md-3 col-sm-12 d-md-flex justify-content-md-between flex-column mb-1');
                 relatedProductsContainer.appendChild(box);
 
                 var header = document.createElement('h3');
