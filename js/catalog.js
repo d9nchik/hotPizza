@@ -12,10 +12,16 @@ promisedProductsCategories.then((promisedProductsCategories) => {
         container.setAttribute('class', 'container');
 
         for (let i = 0; i < promisedProductsCategories.length; i++) {
-            let productCategory = promisedProductsCategories[i];
+            let {
+                url,
+                name
+            } = promisedProductsCategories[i];
             let headingElement = document.createElement('h2');
-            headingElement.textContent = productCategory.name;
+            headingElement.textContent = name;
             container.appendChild(headingElement);
+            headingElement.setAttribute('class', 'button btn-light');
+            headingElement.setAttribute('role', 'button');
+            headingElement.onclick = () => routing.openLink(`catalog/${url}`);
 
             const row = document.createElement('div');
             container.appendChild(row);
@@ -26,8 +32,42 @@ promisedProductsCategories.then((promisedProductsCategories) => {
                     .forEach(product => displayProduct(row, product)));
         }
     }
-})
-;
+});
+
+promisedProductsCategories.then((promisedProductsCategories) => {
+    for (let i = 0; i < promisedProductsCategories.length; i++) {
+        let {
+            url,
+            name,
+            description
+        } = promisedProductsCategories[i];
+
+        routing.addLink(`catalog/${url}`, openCategory);
+
+        function openCategory() {
+            clearMain();
+            const container = document.createElement('div');
+            MAIN.appendChild(container);
+            container.setAttribute('class', 'container');
+
+            var headingElement = document.createElement('h2');
+            headingElement.textContent = name;
+            container.appendChild(headingElement);
+
+            var paragraphElement = document.createElement('p');
+            paragraphElement.textContent = description;
+            container.appendChild(paragraphElement);
+
+            const row = document.createElement('div');
+            container.appendChild(row);
+            row.setAttribute('class', 'row');
+
+            promisedProducts.then(promisedProducts =>
+                promisedProducts.filter(promisedProduct => promisedProduct.categoryId === i)
+                    .forEach(product => displayProduct(row, product)));
+        }
+    }
+});
 
 function displayProduct(row, product) {
     var card = document.createElement('div');
@@ -60,36 +100,3 @@ function displayProduct(row, product) {
     buttonElement.onclick = () => routing.openLink(`product/${product.url}`);
     buttonElement.textContent = 'Просмотреть';
 }
-
-promisedProductsCategories.then((promisedProductsCategories) => {
-    for (let i = 0; i < promisedProductsCategories.length; i++) {
-        let {
-            url, name, description
-        } = promisedProductsCategories[i];
-
-        routing.addLink(`catalog/${url}`, openCategory);
-
-        function openCategory() {
-            clearMain();
-            const container = document.createElement('div');
-            MAIN.appendChild(container);
-            container.setAttribute('class', 'container');
-
-            var headingElement = document.createElement('h2');
-            headingElement.textContent = name;
-            container.appendChild(headingElement);
-
-            var paragraphElement = document.createElement('p');
-            paragraphElement.textContent = description;
-            container.appendChild(paragraphElement);
-
-            const row = document.createElement('div');
-            container.appendChild(row);
-            row.setAttribute('class', 'row');
-
-            promisedProducts.then(promisedProducts =>
-                promisedProducts.filter(promisedProduct => promisedProduct.categoryId === i)
-                    .forEach(product => displayProduct(row, product)));
-        }
-    }
-});
