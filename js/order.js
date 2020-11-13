@@ -78,5 +78,146 @@ promisedProducts.then(promisedProducts => {
         var totalListItemStrong = document.createElement('strong');
         totalListItem.appendChild(totalListItemStrong);
         totalListItemStrong.textContent = totalPrice;
+
+        //TODO: add discount
+
+        generateOrderField(row);
     }
 });
+
+function generateOrderField(row) {
+    var form = document.createElement('div');
+    row.appendChild(form);
+    form.setAttribute('class', 'col-md-8 order-md-1 mb-1');
+    form.innerHTML = '      <h4 class="mb-3">Платежный адрес</h4>\n' +
+        '      <form class="needs-validation" novalidate="">\n' +
+        '        <div class="row">\n' +
+        '          <div class="col-md-6 mb-3">\n' +
+        '            <label for="firstName">Имя</label>\n' +
+        '            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется действительное имя.\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '          <div class="col-md-6 mb-3">\n' +
+        '            <label for="lastName">Фамилия</label>\n' +
+        '            <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется действительная фамилия.\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '\n' +
+        '        <div class="mb-3">\n' +
+        '          <label for="email">Email</label>\n' +
+        '          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>\n' +
+        '          <div class="invalid-feedback">\n' +
+        '            Пожалуйста, введите действующий адрес электронной почты для получения обновлений о доставке.\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '\n' +
+        '        <div class="mb-3">\n' +
+        '          <label for="address">Адрес</label>\n' +
+        '          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">\n' +
+        '          <div class="invalid-feedback">\n' +
+        '            Пожалуйста, введите свой адрес доставки.\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '\n' +
+        '        <div class="mb-3">\n' +
+        '          <label for="address2">Адрес 2 <span class="text-muted">(По желанию)</span></label>\n' +
+        '          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">\n' +
+        '        </div>\n' +
+        '\n' +
+        '        <div class="row">\n' +
+        '          <div class="col-md-3 mb-3">\n' +
+        '            <label for="zip">Почтовый индекс</label>\n' +
+        '            <input type="text" maxlength="5" minlength="5" class="form-control" id="zip" placeholder="" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется почтовый индекс.\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '        <hr class="mb-4">\n' +
+        '        <div class="custom-control custom-checkbox">\n' +
+        '          <input type="checkbox" class="custom-control-input" id="same-address">\n' +
+        '          <label class="custom-control-label" for="same-address">Адрес доставки такой же, как мой платежный адрес</label>\n' +
+        '        </div>\n' +
+        '        <div class="custom-control custom-checkbox">\n' +
+        '          <input type="checkbox" class="custom-control-input" id="save-info">\n' +
+        '          <label class="custom-control-label" for="save-info">Сохраните эту информацию для следующего раза</label>\n' +
+        '        </div>\n' +
+        '        <hr class="mb-4">\n' +
+        '\n' +
+        '        <h4 class="mb-3">Оплата</h4>\n' +
+        '\n' +
+        '        <div class="d-block my-3">\n' +
+        '          <div class="custom-control custom-radio">\n' +
+        '            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">\n' +
+        '            <label class="custom-control-label" for="credit">Кредитная карта</label>\n' +
+        '          </div>\n' +
+        '          <div class="custom-control custom-radio">\n' +
+        '            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">\n' +
+        '            <label class="custom-control-label" for="debit">Дебетовая карточка</label>\n' +
+        '          </div>\n' +
+        '          <div class="custom-control custom-radio">\n' +
+        '            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">\n' +
+        '            <label class="custom-control-label" for="paypal">PayPal</label>\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '        <div class="row">\n' +
+        '          <div class="col-md-6 mb-3">\n' +
+        '            <label for="cc-name">Имя на карте</label>\n' +
+        '            <input type="text" class="form-control" id="cc-name" placeholder="" required="">\n' +
+        '            <small class="text-muted">Полное имя, как показано на карте</small>\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Имя на карте обязательно\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '          <div class="col-md-6 mb-3">\n' +
+        '            <label for="cc-number">Номер карты</label>\n' +
+        '            <input type="text" maxlength="16" minlength="16" class="form-control" id="cc-number" placeholder="" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Номер карты требуется\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '        <div class="row">\n' +
+        '          <div class="col-md-3 mb-3">\n' +
+        '            <label for="cc-expiration">Срок действия</label>\n' +
+        '            <input type="text" maxlength="4" minlength="4" class="form-control" id="cc-expiration" placeholder="" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется срок годности\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '          <div class="col-md-3 mb-3">\n' +
+        '            <label for="cc-cvv">CVV</label>\n' +
+        '            <input type="text" maxlength="3" minlength="3" class="form-control" id="cc-cvv" placeholder="" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется защитный код\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '        </div>\n' +
+        '        <hr class="mb-4">\n' +
+        '        <button class="btn btn-primary btn-lg btn-block" type="submit">Продолжить оформление заказа</button>\n' +
+        '      </form>\n' +
+        '</div>';
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.filter.call(forms, function (form) {
+        form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+
+}
+
+
+
