@@ -106,7 +106,8 @@ promisedProducts.then((promisedProducts) => {
             card.appendChild(img);
             img.setAttribute('src', product.images[0]);
             img.setAttribute('alt', product.productName);
-            img.setAttribute('class', 'card-img-top')
+            img.setAttribute('class', 'btn btn-light card-img-top');
+            img.onclick = () => routing.openLink(`product/${product.url}`);
 
             var cardBody = document.createElement('div');
             card.appendChild(cardBody);

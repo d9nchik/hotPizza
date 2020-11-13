@@ -94,7 +94,7 @@ function displayProduct(row, product) {
     var cardText = document.createElement('p');
     cardBody.appendChild(cardText);
     cardText.setAttribute('class', 'card-text');
-    cardText.textContent = `${product.price}грн.; Вес: ${product.weight}`;
+    cardText.textContent = `${product.price}грн.; Вес: ${product.weight}г`;
 
     var buttonElement = document.createElement('button');
     cardBody.appendChild(buttonElement);
