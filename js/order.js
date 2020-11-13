@@ -138,6 +138,27 @@ function generateOrderField(row) {
         '              Требуется почтовый индекс.\n' +
         '            </div>\n' +
         '          </div>\n' +
+        '          <div class="col-md-3 mb-3">\n' +
+        '            <label for="phone">Телефон</label>\n' +
+        '            <input maxlength="10" id="phone" type="tel" pattern="09\\d{8}" class="form-control" placeholder="0965881523" required="">\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется номер телефона.\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '          <div class="col-md-4 mb-3">\n' +
+        '            <label for="date">Заказ на дату</label>\n' +
+        '            <input type="date" id="date" class="form-control" required>\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется дата на какую нужно привезти заказ.\n' +
+        '            </div>\n' +
+        '          </div>\n' +
+        '          <div class="col-md-3 mb-3">\n' +
+        '            <label for="time">Заказ на время</label>\n' +
+        '            <input type="time" id="time" class="form-control" required>\n' +
+        '            <div class="invalid-feedback">\n' +
+        '              Требуется время на какое нужно привезти заказ.\n' +
+        '            </div>\n' +
+        '          </div>\n' +
         '        </div>\n' +
         '        <hr class="mb-4">\n' +
         '        <div class="custom-control custom-checkbox">\n' +
@@ -186,7 +207,7 @@ function generateOrderField(row) {
         '        <div class="row">\n' +
         '          <div class="col-md-3 mb-3">\n' +
         '            <label for="cc-expiration">Срок действия</label>\n' +
-        '            <input type="text" pattern="\\d{2}/\\d{2}" placeholder="05/24" maxlength="5" minlength="5" class="form-control" id="cc-expiration" placeholder="" required="">\n' +
+        '            <input type="text" pattern="\\d{2}/\\d{2}" placeholder="05/24" maxlength="5" minlength="5" class="form-control" id="cc-expiration" required="">\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется срок годности\n' +
         '            </div>\n' +
@@ -247,6 +268,24 @@ function generateOrderField(row) {
         }
         expireDate.reportValidity();
     });
+
+    const date = document.getElementById('date');
+    const time = document.getElementById('time');
+
+    function checkTimeDate() {
+        if (!orderDateCheck(date.value, time.value)) {
+            date.setCustomValidity('На доставку должно быть выделено минимум 3 часа');
+            time.setCustomValidity('На доставку должно быть выделено минимум 3 часа');
+        } else {
+            date.setCustomValidity('');
+            time.setCustomValidity('');
+        }
+        time.reportValidity();
+        date.reportValidity();
+    }
+
+    date.addEventListener('input', checkTimeDate);
+    time.addEventListener('input', checkTimeDate);
 }
 
 function luna(cardNumber) {
@@ -271,4 +310,10 @@ function checkExpireDate(expireDate) {
     var [month, year] = expireDate.split('/');
     var dateCheck = new Date(2000 + Number(year), Number(month) - 1);
     return Date.now() < dateCheck.getTime();
+}
+
+function orderDateCheck(dateValue, timeValue) {
+    var [year, month, day] = dateValue.split('-');
+    var [hours, minute] = timeValue.split(':');
+    return Date.now() + 3 * 60 * 60 * 1_000 <= new Date(year, month - 1, day, hours, minute);
 }
