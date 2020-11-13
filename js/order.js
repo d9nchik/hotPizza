@@ -65,7 +65,7 @@ promisedProducts.then(promisedProducts => {
             var span = document.createElement('span');
             li.appendChild(span);
             span.setAttribute('class', 'text-muted');
-            span.textContent = `${itemsPrice} грн.`;
+            span.textContent = `${itemsPrice.toFixed(2)} грн.`;
             totalPrice += itemsPrice;
         });
 
@@ -77,7 +77,7 @@ promisedProducts.then(promisedProducts => {
         totalListItemSpan.textContent = 'В сумме(грн):';
         var totalListItemStrong = document.createElement('strong');
         totalListItem.appendChild(totalListItemStrong);
-        totalListItemStrong.textContent = totalPrice;
+        totalListItemStrong.textContent = totalPrice.toFixed(2);
 
         //TODO: add discount
 
