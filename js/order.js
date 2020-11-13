@@ -132,7 +132,7 @@ function generateOrderField(row) {
         '        <div class="row">\n' +
         '          <div class="col-md-3 mb-3">\n' +
         '            <label for="zip">Почтовый индекс</label>\n' +
-        '            <input type="text" maxlength="5" minlength="5" class="form-control" id="zip" placeholder="" required="">\n' +
+        '            <input id="postIndex" type="text" maxlength="5" minlength="5" class="form-control" id="zip" placeholder="" required="">\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется почтовый индекс.\n' +
         '            </div>\n' +
@@ -212,11 +212,19 @@ function generateOrderField(row) {
                 event.preventDefault()
                 event.stopPropagation()
             }
-
             form.classList.add('was-validated')
         }, false)
     })
 
+    const postIndex = document.getElementById('postIndex');
+    postIndex.addEventListener('input', function validate() {
+        if (Number.isNaN(Number(postIndex.value))) {
+            postIndex.setCustomValidity('I expected post code!');
+        } else {
+            postIndex.setCustomValidity('');
+        }
+        postIndex.reportValidity();
+    });
 }
 
 
