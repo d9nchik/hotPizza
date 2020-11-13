@@ -89,6 +89,7 @@ function generateOrderField(row) {
     var form = document.createElement('div');
     row.appendChild(form);
     form.setAttribute('class', 'col-md-8 order-md-1 mb-1');
+    //TODO: add date
     form.innerHTML = '      <h4 class="mb-3">Платежный адрес</h4>\n' +
         '      <form class="needs-validation" novalidate="">\n' +
         '        <div class="row">\n' +
@@ -219,7 +220,7 @@ function generateOrderField(row) {
     const postIndex = document.getElementById('postIndex');
     postIndex.addEventListener('input', function validate() {
         if (Number.isNaN(Number(postIndex.value))) {
-            postIndex.setCustomValidity('I expected post code!');
+            postIndex.setCustomValidity('Почтовый индекс не верный');
         } else {
             postIndex.setCustomValidity('');
         }
@@ -227,5 +228,20 @@ function generateOrderField(row) {
     });
 }
 
-
-
+function luna(cardNumber) {
+    if (cardNumber.length !== 16) {
+        return false;
+    }
+    var sum = 0;
+    for (let i = 0; i < cardNumber.length; i++) {
+        let currentNumber = Number(cardNumber[cardNumber.length - i - 1]);
+        if (i % 2 !== 0) {
+            currentNumber *= 2;
+            if (currentNumber > 9) {
+                currentNumber -= 9;
+            }
+        }
+        sum += currentNumber;
+    }
+    return sum % 10 === 0;
+}
