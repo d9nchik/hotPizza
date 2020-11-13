@@ -111,7 +111,7 @@ function generateOrderField(row) {
         '\n' +
         '        <div class="mb-3">\n' +
         '          <label for="email">Email</label>\n' +
-        '          <input type="email" class="form-control" id="email" placeholder="you@example.com" required>\n' +
+        '          <input type="email" class="form-control" id="email" placeholder="you@example.com" required pattern="[\\w\\d\\.]+@[\\w\\d\\.]+?\\.[\\w\\d]+">\n' +
         '          <div class="invalid-feedback">\n' +
         '            Пожалуйста, введите действующий адрес электронной почты для получения обновлений о доставке.\n' +
         '          </div>\n' +
