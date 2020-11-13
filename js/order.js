@@ -186,14 +186,14 @@ function generateOrderField(row) {
         '        <div class="row">\n' +
         '          <div class="col-md-3 mb-3">\n' +
         '            <label for="cc-expiration">Срок действия</label>\n' +
-        '            <input type="text" maxlength="4" minlength="4" class="form-control" id="cc-expiration" placeholder="" required="">\n' +
+        '            <input type="text" pattern="\\d{2}/\\d{2}" placeholder="05/24" maxlength="5" minlength="5" class="form-control" id="cc-expiration" placeholder="" required="">\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется срок годности\n' +
         '            </div>\n' +
         '          </div>\n' +
         '          <div class="col-md-3 mb-3">\n' +
         '            <label for="cc-cvv">CVV</label>\n' +
-        '            <input type="text" maxlength="3" minlength="3" class="form-control" id="cc-cvv" placeholder="" required="">\n' +
+        '            <input type="text" pattern="\\d{3}" maxlength="3" minlength="3" class="form-control" id="cc-cvv" placeholder="305" required="">\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется защитный код\n' +
         '            </div>\n' +
