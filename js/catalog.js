@@ -50,11 +50,13 @@ promisedProductsCategories.then((promisedProductsCategories) => {
             MAIN.appendChild(container);
             container.setAttribute('class', 'container');
 
-            var headingElement = document.createElement('h2');
+            var headingElement = document.createElement('h1');
             headingElement.textContent = name;
+            headingElement.setAttribute('class', 'text-center')
             container.appendChild(headingElement);
 
             var paragraphElement = document.createElement('p');
+            paragraphElement.setAttribute('class', 'lead text-center');
             paragraphElement.textContent = description;
             container.appendChild(paragraphElement);
 
