@@ -237,6 +237,16 @@ function generateOrderField(row) {
         }
         cardNumber.reportValidity();
     });
+
+    const expireDate = document.getElementById('cc-expiration');
+    expireDate.addEventListener('input', function validate() {
+        if (!checkExpireDate(expireDate.value)) {
+            expireDate.setCustomValidity('Ваша карта не действительная');
+        } else {
+            expireDate.setCustomValidity('');
+        }
+        expireDate.reportValidity();
+    });
 }
 
 function luna(cardNumber) {
@@ -255,4 +265,10 @@ function luna(cardNumber) {
         sum += currentNumber;
     }
     return sum % 10 === 0;
+}
+
+function checkExpireDate(expireDate) {
+    var [month, year] = expireDate.split('/');
+    var dateCheck = new Date(2000 + Number(year), Number(month) - 1);
+    return Date.now() < dateCheck.getTime();
 }
