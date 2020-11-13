@@ -1,7 +1,7 @@
 import {CART} from "./cart.js";
 import {routing} from "./routing.js";
 import {promisedProducts} from "./getJson.js";
-import {MAIN, clearMain} from "./renderHelp.js";
+import {clearMain, MAIN} from "./renderHelp.js";
 
 
 promisedProducts.then(promisedProducts => {
@@ -219,12 +219,23 @@ function generateOrderField(row) {
 
     const postIndex = document.getElementById('postIndex');
     postIndex.addEventListener('input', function validate() {
-        if (Number.isNaN(Number(postIndex.value))) {
+        let value = postIndex.value;
+        if (value && Number.isNaN(Number(value))) {
             postIndex.setCustomValidity('Почтовый индекс не верный');
         } else {
             postIndex.setCustomValidity('');
         }
         postIndex.reportValidity();
+    });
+
+    const cardNumber = document.getElementById('cc-number');
+    cardNumber.addEventListener('input', function validate() {
+        if (!luna(cardNumber.value)) {
+            cardNumber.setCustomValidity('Номер карточки не верный');
+        } else {
+            cardNumber.setCustomValidity('');
+        }
+        cardNumber.reportValidity();
     });
 }
 
