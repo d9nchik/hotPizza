@@ -3,7 +3,7 @@ class Router {
 
     constructor() {
         window.onhashchange = () => {
-           this.refresh();
+            this.refresh();
         }
     }
 
@@ -17,6 +17,7 @@ class Router {
     }
 
     openLink(link) {
+        $('html,body').scrollTop(0);
         location.hash = link;
         var value = this.links[link];
         if (value != null) {
