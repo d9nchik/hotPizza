@@ -130,28 +130,28 @@ function generateOrderField(row) {
         '        </div>\n' +
         '\n' +
         '        <div class="row">\n' +
-        '          <div class="col-md-3 mb-3">\n' +
+        '          <div class="col-md-4 mb-3">\n' +
         '            <label for="zip">Почтовый индекс</label>\n' +
-        '            <input id="postIndex" type="text" maxlength="5" minlength="5" class="form-control" id="zip" placeholder="" required="">\n' +
+        '            <input id="zip" type="text" maxlength="5" minlength="5" class="form-control" id="zip" placeholder="" required="">\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется почтовый индекс.\n' +
         '            </div>\n' +
         '          </div>\n' +
-        '          <div class="col-md-3 mb-3">\n' +
+        '          <div class="col-md-8 mb-3">\n' +
         '            <label for="phone">Телефон</label>\n' +
         '            <input maxlength="10" id="phone" type="tel" pattern="09\\d{8}" class="form-control" placeholder="0965881523" required="">\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется номер телефона.\n' +
         '            </div>\n' +
         '          </div>\n' +
-        '          <div class="col-md-4 mb-3">\n' +
+        '          <div class="col-md-5 mb-3">\n' +
         '            <label for="date">Заказ на дату</label>\n' +
         '            <input type="date" id="date" class="form-control" required>\n' +
         '            <div class="invalid-feedback">\n' +
         '              Требуется дата на какую нужно привезти заказ.\n' +
         '            </div>\n' +
         '          </div>\n' +
-        '          <div class="col-md-3 mb-3">\n' +
+        '          <div class="col-md-4 mb-3">\n' +
         '            <label for="time">Заказ на время</label>\n' +
         '            <input type="time" id="time" class="form-control" required>\n' +
         '            <div class="invalid-feedback">\n' +
@@ -174,15 +174,15 @@ function generateOrderField(row) {
         '\n' +
         '        <div class="d-block my-3">\n' +
         '          <div class="custom-control custom-radio">\n' +
-        '            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">\n' +
+        '            <input id="credit" name="paymentMethod" type="radio" value="0" class="custom-control-input" checked="" required="">\n' +
         '            <label class="custom-control-label" for="credit">Кредитная карта</label>\n' +
         '          </div>\n' +
         '          <div class="custom-control custom-radio">\n' +
-        '            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">\n' +
+        '            <input id="debit" name="paymentMethod" type="radio" value="1" class="custom-control-input" required="">\n' +
         '            <label class="custom-control-label" for="debit">Дебетовая карточка</label>\n' +
         '          </div>\n' +
         '          <div class="custom-control custom-radio">\n' +
-        '            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">\n' +
+        '            <input id="paypal" name="paymentMethod" type="radio" value="2" class="custom-control-input" required="">\n' +
         '            <label class="custom-control-label" for="paypal">PayPal</label>\n' +
         '          </div>\n' +
         '        </div>\n' +
@@ -237,7 +237,7 @@ function generateOrderField(row) {
         }, false)
     });
 
-    const postIndex = document.getElementById('postIndex');
+    const postIndex = document.getElementById('zip');
     postIndex.addEventListener('input', function validate() {
         let value = postIndex.value;
         if (value && Number.isNaN(Number(value))) {
@@ -285,6 +285,30 @@ function generateOrderField(row) {
 
     date.addEventListener('input', checkTimeDate);
     time.addEventListener('input', checkTimeDate);
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        var orderDetails = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('address').value,
+            address2: document.getElementById('address2').value,
+            zip: document.getElementById('zip').value,
+            phone: document.getElementById('phone').value,
+            date: document.getElementById('date').value,
+            time: document.getElementById('time').value,
+            'same-address': document.querySelector('#same-address:checked') != null,
+            'save-info': document.querySelector('#save-info:checked') != null,
+            'paymentMethod': document.querySelector('input[name="paymentMethod"]:checked').value,
+            'cc-name': document.getElementById('cc-name').value,
+            'cc-number': document.getElementById('cc-number').value,
+            'cc-expiration': document.getElementById('cc-expiration').value,
+            'cc-cvv': document.getElementById('cc-cvv').value,
+        }
+        makeOrder(orderDetails);
+    });
 }
 
 function luna(cardNumber) {
@@ -315,4 +339,86 @@ function orderDateCheck(dateValue, timeValue) {
     var [year, month, day] = dateValue.split('-');
     var [hours, minute] = timeValue.split(':');
     return Date.now() + 3 * 60 * 60 * 1_000 <= new Date(year, month - 1, day, hours, minute);
+}
+
+function makeOrder(data) {
+    data.cart = {};
+    console.log(data);
+    for (let key of CART) {
+        data.cart[key] = CART[key];
+    }
+    CART.clearCart();
+    var uniqueID = Date.now();
+    promisedProducts.then((promisedProducts) => {
+
+        routing.addLink(`order/${uniqueID}`, orderDetails);
+
+        function orderDetails() {
+            clearMain();
+            var container = document.createElement('div');
+            container.setAttribute('class', 'container');
+            MAIN.appendChild(container);
+
+            var row = document.createElement('div');
+            row.setAttribute('class', 'row');
+            container.appendChild(row);
+
+            var yourCart = document.createElement('div');
+            yourCart.setAttribute('class', 'col-md-4 order-md-2 mb-4');
+            row.appendChild(yourCart);
+
+            var titleOfCart = document.createElement('h4');
+            titleOfCart.setAttribute('class', 'd-flex justify-content-between align-items-center mb-3');
+            yourCart.appendChild(titleOfCart);
+            var spanTitle = document.createElement('span');
+            spanTitle.setAttribute('class', 'text-muted');
+            spanTitle.textContent = 'Ваш заказ';
+            titleOfCart.appendChild(spanTitle);
+            var numberOfItemsSpan = document.createElement('span');
+            numberOfItemsSpan.setAttribute('class', 'badge badge-secondary badge-pill');
+            numberOfItemsSpan.textContent = Object.keys(data.cart).length;
+            titleOfCart.appendChild(numberOfItemsSpan);
+
+            var list = document.createElement('ul');
+            list.setAttribute('class', 'list-group mb-3');
+            yourCart.appendChild(list);
+            var totalPrice = 0;
+            promisedProducts.filter(product => Object.keys(data.cart).includes(product.url)).forEach(product => {
+
+                var li = document.createElement('li');
+                li.setAttribute('class', 'list-group-item d-flex justify-content-between lh-condensed');
+                list.appendChild(li);
+
+                var div = document.createElement('div');
+                li.appendChild(div);
+                var h6 = document.createElement('h6');
+                div.appendChild(h6);
+                h6.setAttribute('class', 'my-0');
+                h6.textContent = product.productName;
+                var small = document.createElement('small');
+                div.appendChild(small);
+                small.setAttribute('class', 'text-muted');
+                small.textContent = `${data.cart[product.url]} X ${product.price}грн.`;
+
+                const itemsPrice = data.cart[product.url] * product.price;
+                var span = document.createElement('span');
+                li.appendChild(span);
+                span.setAttribute('class', 'text-muted');
+                span.textContent = `${itemsPrice.toFixed(2)} грн.`;
+                totalPrice += itemsPrice;
+            });
+
+            var totalListItem = document.createElement('li');
+            list.appendChild(totalListItem);
+            totalListItem.setAttribute('class', 'list-group-item d-flex justify-content-between');
+            var totalListItemSpan = document.createElement('span');
+            totalListItem.appendChild(totalListItemSpan);
+            totalListItemSpan.textContent = 'В сумме(грн):';
+            var totalListItemStrong = document.createElement('strong');
+            totalListItem.appendChild(totalListItemStrong);
+            totalListItemStrong.textContent = totalPrice.toFixed(2);
+        }
+
+    });
+    routing.openLink(`order/${uniqueID}`);
 }
