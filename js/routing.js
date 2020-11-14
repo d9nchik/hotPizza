@@ -17,12 +17,20 @@ class Router {
     }
 
     openLink(link) {
-        $('html,body').scrollTop(0);
+        if (this.timerInvalidRedirection) {
+            clearTimeout(this.timerInvalidRedirection);
+        }
         location.hash = link;
         var value = this.links[link];
         if (value != null) {
+            document.querySelectorAll('html, body').forEach(element => element.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            }));
             value();
             this.opened = link;
+        } else if (typeof this.links['catalog'] == 'function') {
+            this.timerInvalidRedirection = setTimeout(() => this.links['catalog'](), 0);
         }
     }
 
