@@ -39,7 +39,7 @@ promisedProducts.then((products) => {
                 '            <label for="numberOfPizzas">Пиццы</label>\n' +
                 ' <input min="1" max="10" id="numberOfPizzas" type="number" class="form-control" required=""> ' +
                 '            <div class="invalid-feedback">\n' +
-                '              Требуется количество пиц\n' +
+                '              Требуется количество пиц от 1 до 10\n' +
                 '            </div></form>\n' +
                 '      </div>\n' +
                 '      <div class="modal-footer">\n' +
@@ -100,6 +100,8 @@ promisedProducts.then((products) => {
                     pizzaInput.classList.add('was-validated');
                     CART.addToCart(url, Number(pizzaInput.value));
                     $('#exampleModal').modal('hide');
+                } else {
+                    pizzaInput.classList.add('is-invalid');
                 }
             }
 
