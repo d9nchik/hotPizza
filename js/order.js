@@ -89,7 +89,6 @@ function generateOrderField(row) {
     var form = document.createElement('div');
     row.appendChild(form);
     form.setAttribute('class', 'col-md-8 order-md-1 mb-1');
-    //TODO: add date
     form.innerHTML = '      <h4 class="mb-3">Платежный адрес</h4>\n' +
         '      <form class="needs-validation" novalidate="">\n' +
         '        <div class="row">\n' +
@@ -236,7 +235,7 @@ function generateOrderField(row) {
             }
             form.classList.add('was-validated')
         }, false)
-    })
+    });
 
     const postIndex = document.getElementById('postIndex');
     postIndex.addEventListener('input', function validate() {

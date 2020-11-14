@@ -22,6 +22,34 @@ promisedProducts.then((products) => {
                 relatedProductIds,
             } = product;
 
+            const modalDiv = document.createElement('div');
+            modalDiv.innerHTML =
+                '<!-- Modal -->\n' +
+                '<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+                '  <div class="modal-dialog modal-dialog-centered">\n' +
+                '    <div class="modal-content">\n' +
+                '      <div class="modal-header">\n' +
+                '        <h5 class="modal-title" id="exampleModalLabel">Сколько пиц даного типа вы хотите купить?</h5>\n' +
+                '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
+                '          <span aria-hidden="true">&times;</span>\n' +
+                '        </button>\n' +
+                '      </div>\n' +
+                '      <div class="modal-body">\n' +
+                '       <form class="needs-validation" novalidate="">' +
+                '            <label for="numberOfPizzas">Пиццы</label>\n' +
+                ' <input min="1" max="10" id="numberOfPizzas" type="number" class="form-control" required=""> ' +
+                '            <div class="invalid-feedback">\n' +
+                '              Требуется количество пиц\n' +
+                '            </div></form>\n' +
+                '      </div>\n' +
+                '      <div class="modal-footer">\n' +
+                '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>\n' +
+                '        <button type="button" class="btn btn-primary" id="addToCartButton">Добавить</button>\n' +
+                '      </div>\n' +
+                '    </div>\n' +
+                '  </div>\n' +
+                '</div>';
+            MAIN.appendChild(modalDiv);
 
             const container = document.createElement('div');
             MAIN.appendChild(container);
@@ -57,7 +85,7 @@ promisedProducts.then((products) => {
             infoBlock.appendChild(weightNode);
 
             var priceNode = document.createElement('div');
-            priceNode.innerHTML = '<button type="button" class="btn btn-outline-primary">\n' +
+            priceNode.innerHTML = '<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">\n' +
                 'Цена: ' + price + 'грн.' +
                 '          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg">\n' +
                 '  <path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z"></path>\n' +
@@ -65,12 +93,16 @@ promisedProducts.then((products) => {
                 '  <path d="M13 5a2 2 0 0 0 2 2V5h-2zM3 5a2 2 0 0 1-2 2V5h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 13a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path>\n' +
                 '</svg>\n' +
                 '        </button>';
-            var button = priceNode.firstChild;
-            button.onclick = () => {
-                //FIXME: change to modal
-                var howManyItems = prompt('Сколько пиц даного типа вы хотите купить?');
-                CART.addToCart(url, Number(howManyItems));
-            };
+
+            document.getElementById('addToCartButton').onclick = () => {
+                let pizzaInput = document.getElementById('numberOfPizzas');
+                if (pizzaInput.checkValidity()) {
+                    pizzaInput.classList.add('was-validated');
+                    CART.addToCart(url, Number(pizzaInput.value));
+                    $('#exampleModal').modal('hide');
+                }
+            }
+
             infoBlock.appendChild(priceNode);
 
             promisedIngredients.then((ingredientsPromised) => {
@@ -96,7 +128,6 @@ promisedProducts.then((products) => {
                     img.setAttribute('class', 'img-fluid');
                 });
             });
-
 
             var relatedProductHeader = document.createElement('h2');
             relatedProductHeader.textContent = 'Похожие';
