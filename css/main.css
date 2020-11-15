@@ -39,3 +39,32 @@
         transform: rotate(360deg);
     }
 }
+
+/*Scrolling promotions*/
+
+.hide-extra {
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+#scroll-promotions {
+    display: flex;
+}
+
+.scroll-promotion img {
+    cursor: pointer;
+    width: 100%;
+}
+
+.scroll-promotion {
+    width: 100%;
+    position: relative;
+}
+
+.scroll-promotion h3 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+}

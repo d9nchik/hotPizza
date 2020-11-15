@@ -63,6 +63,8 @@ const CART = (function getItemsOfPreviousSession() {
 
 Object.setPrototypeOf(CART, cartProto);
 
+CART.show();
+
 export {CART};
 import {promisedProducts} from './getJson.js';
 import {clearMain, MAIN} from './renderHelp.js';
