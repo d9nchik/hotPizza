@@ -39,7 +39,7 @@ promisedPromotions.then(promisedPromotions => {
 
             const container = document.createElement('div');
             MAIN.appendChild(container);
-            container.setAttribute('class', 'container mb-1');
+            container.setAttribute('class', 'container mb-4');
 
             var headingElement = document.createElement('h1');
             headingElement.textContent = name;

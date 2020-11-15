@@ -331,7 +331,12 @@ function luna(cardNumber) {
 
 function checkExpireDate(expireDate) {
     var [month, year] = expireDate.split('/');
-    var dateCheck = new Date(2000 + Number(year), Number(month) - 1);
+    month = Number(month);
+    year = Number(year);
+    if (month > 12) {
+        return false;
+    }
+    var dateCheck = new Date(2000 + year, month - 1);
     return Date.now() < dateCheck.getTime();
 }
 
