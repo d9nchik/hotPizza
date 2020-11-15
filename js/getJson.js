@@ -1,8 +1,10 @@
-var promisedJson = fetch('db.json').then(function makeObject(data) {
-    return data.json();
-});
-export const promisedProducts = promisedJson.then((data) => data.products);
-export const promisedProductsCategories = promisedJson.then((data) => data.productsCategories);
-export const promisedIngredients = promisedJson.then((data) => data.ingredients);
-export const promisedRecommendations = promisedJson.then((data) => data.recommendations);
-export const promisedPromotions = promisedJson.then(data => data.promotions);
+const SERVER_IP = '34.227.61.134';
+export const promisedProducts = getObj(`http://${SERVER_IP}/getProducts`);
+export const promisedProductsCategories = getObj(`http://${SERVER_IP}/getCategories`);
+export const promisedIngredients = getObj(`http://${SERVER_IP}/getIngredients`);
+export const promisedRecommendations = getObj(`http://${SERVER_IP}/getRecommended`);
+export const promisedPromotions = getObj(`http://${SERVER_IP}/getPromotions`);
+
+function getObj(url) {
+    return fetch(url).then(data => data.json());
+}
