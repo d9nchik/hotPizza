@@ -1,5 +1,5 @@
 import {} from './renderProduct.js';
-import {} from './catalog.js';
+import {displayProduct} from './catalog.js';
 import {} from './order.js';
 import {} from './promotion.js';
 import {promisedRecommendations, promisedProducts, promisedPromotions} from "./getJson.js";
@@ -60,6 +60,26 @@ promisedPromotions.then(promisedPromotions => {
         next.textContent = 'Следующая';
         next.onclick = nextSlide;
 
+        showInterestingItems(bigContainer);
+
         startAnimation(promisedPromotions.length, scrollPromotions, `width: ${100 * promisedPromotions.length}%;`);
     }
 });
+
+function showInterestingItems(bigContainer) {
+    var header = document.createElement('h2');
+    bigContainer.appendChild(header);
+    header.textContent = 'Рекомендуемые товары';
+
+    var row = document.createElement('div');
+    row.setAttribute('class', 'row');
+    bigContainer.appendChild(row);
+
+    promisedRecommendations.then(promisedRecommendations =>
+        promisedProducts.then(promisedProducts =>
+            promisedRecommendations.forEach(recommendation =>
+                displayProduct(row, promisedProducts[recommendation])
+            )
+        )
+    );
+}

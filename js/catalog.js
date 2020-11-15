@@ -71,7 +71,7 @@ promisedProductsCategories.then((promisedProductsCategories) => {
     }
 });
 
-function displayProduct(row, product) {
+export function displayProduct(row, product) {
     var card = document.createElement('div');
     row.appendChild(card);
     card.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6')
