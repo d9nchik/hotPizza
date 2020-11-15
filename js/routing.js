@@ -1,3 +1,5 @@
+const DEFAULT_PATH = '';
+
 class Router {
     links = {};
 
@@ -30,8 +32,8 @@ class Router {
             }));
             value();
             this.opened = link;
-        } else if (typeof this.links['catalog'] == 'function') {
-            this.timerInvalidRedirection = setTimeout(() => this.links['catalog'](), 0);
+        } else if (typeof this.links[DEFAULT_PATH] == 'function') {
+            this.timerInvalidRedirection = setTimeout(() => this.links[DEFAULT_PATH](), 0);
         }
     }
 
