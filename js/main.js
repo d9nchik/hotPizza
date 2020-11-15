@@ -5,7 +5,7 @@ import {} from './promotion.js';
 import {promisedRecommendations, promisedProducts, promisedPromotions} from "./getJson.js";
 import {routing} from "./routing.js";
 import {clearMain, MAIN} from "./renderHelp.js";
-import {startAnimation} from "./scroller.js";
+import {nextSlide, previousSlide, startAnimation} from "./scroller.js";
 
 console.log('Hello world');
 promisedPromotions.then(promisedPromotions => {
@@ -45,6 +45,20 @@ promisedPromotions.then(promisedPromotions => {
             promotionElement.appendChild(name);
             name.setAttribute('class', 'h2');
         });
+
+        var buttons = document.createElement('div');
+        bigContainer.appendChild(buttons);
+        buttons.setAttribute('id', 'coolButtonsHandler');
+        var previous = document.createElement('button');
+        buttons.appendChild(previous);
+        previous.setAttribute('class', 'glow-on-hover');
+        previous.textContent = 'Предыдущая';
+        previous.onclick = previousSlide;
+        var next = document.createElement('button');
+        buttons.appendChild(next);
+        next.setAttribute('class', 'glow-on-hover');
+        next.textContent = 'Следующая';
+        next.onclick = nextSlide;
 
         startAnimation(promisedPromotions.length, scrollPromotions, `width: ${100 * promisedPromotions.length}%;`);
     }
