@@ -5,6 +5,7 @@ import {} from './promotion.js';
 import {promisedRecommendations, promisedProducts, promisedPromotions} from "./getJson.js";
 import {routing} from "./routing.js";
 import {clearMain, MAIN} from "./renderHelp.js";
+import {startAnimation} from "./scroller.js";
 
 console.log('Hello world');
 promisedPromotions.then(promisedPromotions => {
@@ -27,7 +28,6 @@ promisedPromotions.then(promisedPromotions => {
         var scrollPromotions = document.createElement('div');
         scrollPromotions.setAttribute('id', 'scroll-promotions');
         hideExtra.appendChild(scrollPromotions);
-        scrollPromotions.setAttribute('style', `width: ${100 * promisedPromotions.length}%`);
 
         promisedPromotions.forEach(promotion => {
             var promotionElement = document.createElement('div');
@@ -45,5 +45,7 @@ promisedPromotions.then(promisedPromotions => {
             promotionElement.appendChild(name);
             name.setAttribute('class', 'h2');
         });
+
+        startAnimation(promisedPromotions.length, scrollPromotions, `width: ${100 * promisedPromotions.length}%;`);
     }
 });
