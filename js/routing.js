@@ -19,6 +19,7 @@ class Router {
     openLink(link) {
         if (this.timerInvalidRedirection) {
             clearTimeout(this.timerInvalidRedirection);
+            this.timerInvalidRedirection = null;
         }
         location.hash = link;
         var value = this.links[link];
