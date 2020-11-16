@@ -2,6 +2,7 @@ import {CART} from "./cart.js";
 import {routing} from "./routing.js";
 import {promisedProducts} from "./getJson.js";
 import {clearMain, MAIN} from "./renderHelp.js";
+import {sendData} from "./sendData.js";
 
 
 promisedProducts.then(promisedProducts => {
@@ -309,6 +310,29 @@ function generateOrderField(row) {
         }
         makeOrder(orderDetails);
     });
+
+    const modalDiv = document.createElement('div');
+    modalDiv.innerHTML =
+        '<!-- Modal -->\n' +
+        '<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">\n' +
+        '  <div class="modal-dialog modal-dialog-centered">\n' +
+        '    <div class="modal-content">\n' +
+        '      <div class="modal-header">\n' +
+        '        <h5 class="modal-title" id="exampleModalLabel">Что-то пошло не так</h5>\n' +
+        '        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\n' +
+        '          <span aria-hidden="true">&times;</span>\n' +
+        '        </button>\n' +
+        '      </div>\n' +
+        '      <div class="modal-body">\n' +
+        'Попробуйте ещё раз' +
+        '      </div>\n' +
+        '      <div class="modal-footer">\n' +
+        '        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>\n' +
+        '      </div>\n' +
+        '    </div>\n' +
+        '  </div>\n' +
+        '</div>';
+    MAIN.appendChild(modalDiv)
 }
 
 function luna(cardNumber) {
@@ -348,82 +372,88 @@ function orderDateCheck(dateValue, timeValue) {
 
 function makeOrder(data) {
     data.cart = {};
-    console.log(data);
     for (let key of CART) {
         data.cart[key] = CART[key];
     }
-    CART.clearCart();
-    var uniqueID = Date.now();
-    promisedProducts.then((promisedProducts) => {
+    sendData(data, ifOk, troubles);
 
-        routing.addLink(`order/${uniqueID}`, orderDetails);
+    function ifOk(uniqueID) {
+        CART.clearCart();
+        promisedProducts.then((promisedProducts) => {
 
-        function orderDetails() {
-            clearMain();
-            var container = document.createElement('div');
-            container.setAttribute('class', 'container');
-            MAIN.appendChild(container);
+            routing.addLink(`order/${uniqueID}`, orderDetails);
 
-            var row = document.createElement('div');
-            row.setAttribute('class', 'row');
-            container.appendChild(row);
+            function orderDetails() {
+                clearMain();
+                var container = document.createElement('div');
+                container.setAttribute('class', 'container');
+                MAIN.appendChild(container);
 
-            var yourCart = document.createElement('div');
-            yourCart.setAttribute('class', 'col-md-4 order-md-2 mb-4');
-            row.appendChild(yourCart);
+                var row = document.createElement('div');
+                row.setAttribute('class', 'row');
+                container.appendChild(row);
 
-            var titleOfCart = document.createElement('h4');
-            titleOfCart.setAttribute('class', 'd-flex justify-content-between align-items-center mb-3');
-            yourCart.appendChild(titleOfCart);
-            var spanTitle = document.createElement('span');
-            spanTitle.setAttribute('class', 'text-muted');
-            spanTitle.textContent = 'Ваш заказ';
-            titleOfCart.appendChild(spanTitle);
-            var numberOfItemsSpan = document.createElement('span');
-            numberOfItemsSpan.setAttribute('class', 'badge badge-secondary badge-pill');
-            numberOfItemsSpan.textContent = Object.keys(data.cart).length;
-            titleOfCart.appendChild(numberOfItemsSpan);
+                var yourCart = document.createElement('div');
+                yourCart.setAttribute('class', 'col-md-4 order-md-2 mb-4');
+                row.appendChild(yourCart);
 
-            var list = document.createElement('ul');
-            list.setAttribute('class', 'list-group mb-3');
-            yourCart.appendChild(list);
-            var totalPrice = 0;
-            promisedProducts.filter(product => Object.keys(data.cart).includes(product.url)).forEach(product => {
+                var titleOfCart = document.createElement('h4');
+                titleOfCart.setAttribute('class', 'd-flex justify-content-between align-items-center mb-3');
+                yourCart.appendChild(titleOfCart);
+                var spanTitle = document.createElement('span');
+                spanTitle.setAttribute('class', 'text-muted');
+                spanTitle.textContent = 'Ваш заказ';
+                titleOfCart.appendChild(spanTitle);
+                var numberOfItemsSpan = document.createElement('span');
+                numberOfItemsSpan.setAttribute('class', 'badge badge-secondary badge-pill');
+                numberOfItemsSpan.textContent = Object.keys(data.cart).length;
+                titleOfCart.appendChild(numberOfItemsSpan);
 
-                var li = document.createElement('li');
-                li.setAttribute('class', 'list-group-item d-flex justify-content-between lh-condensed');
-                list.appendChild(li);
+                var list = document.createElement('ul');
+                list.setAttribute('class', 'list-group mb-3');
+                yourCart.appendChild(list);
+                var totalPrice = 0;
+                promisedProducts.filter(product => Object.keys(data.cart).includes(product.url)).forEach(product => {
 
-                var div = document.createElement('div');
-                li.appendChild(div);
-                var h6 = document.createElement('h6');
-                div.appendChild(h6);
-                h6.setAttribute('class', 'my-0');
-                h6.textContent = product.productName;
-                var small = document.createElement('small');
-                div.appendChild(small);
-                small.setAttribute('class', 'text-muted');
-                small.textContent = `${data.cart[product.url]} X ${product.price}грн.`;
+                    var li = document.createElement('li');
+                    li.setAttribute('class', 'list-group-item d-flex justify-content-between lh-condensed');
+                    list.appendChild(li);
 
-                const itemsPrice = data.cart[product.url] * product.price;
-                var span = document.createElement('span');
-                li.appendChild(span);
-                span.setAttribute('class', 'text-muted');
-                span.textContent = `${itemsPrice.toFixed(2)} грн.`;
-                totalPrice += itemsPrice;
-            });
+                    var div = document.createElement('div');
+                    li.appendChild(div);
+                    var h6 = document.createElement('h6');
+                    div.appendChild(h6);
+                    h6.setAttribute('class', 'my-0');
+                    h6.textContent = product.productName;
+                    var small = document.createElement('small');
+                    div.appendChild(small);
+                    small.setAttribute('class', 'text-muted');
+                    small.textContent = `${data.cart[product.url]} X ${product.price}грн.`;
 
-            var totalListItem = document.createElement('li');
-            list.appendChild(totalListItem);
-            totalListItem.setAttribute('class', 'list-group-item d-flex justify-content-between');
-            var totalListItemSpan = document.createElement('span');
-            totalListItem.appendChild(totalListItemSpan);
-            totalListItemSpan.textContent = 'В сумме(грн):';
-            var totalListItemStrong = document.createElement('strong');
-            totalListItem.appendChild(totalListItemStrong);
-            totalListItemStrong.textContent = totalPrice.toFixed(2);
-        }
+                    const itemsPrice = data.cart[product.url] * product.price;
+                    var span = document.createElement('span');
+                    li.appendChild(span);
+                    span.setAttribute('class', 'text-muted');
+                    span.textContent = `${itemsPrice.toFixed(2)} грн.`;
+                    totalPrice += itemsPrice;
+                });
 
-    });
-    routing.openLink(`order/${uniqueID}`);
+                var totalListItem = document.createElement('li');
+                list.appendChild(totalListItem);
+                totalListItem.setAttribute('class', 'list-group-item d-flex justify-content-between');
+                var totalListItemSpan = document.createElement('span');
+                totalListItem.appendChild(totalListItemSpan);
+                totalListItemSpan.textContent = 'В сумме(грн):';
+                var totalListItemStrong = document.createElement('strong');
+                totalListItem.appendChild(totalListItemStrong);
+                totalListItemStrong.textContent = totalPrice.toFixed(2);
+            }
+
+        });
+        routing.openLink(`order/${uniqueID}`);
+    }
+
+    function troubles() {
+        $('#exampleModal').modal('show');
+    }
 }
