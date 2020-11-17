@@ -1,8 +1,8 @@
-import {} from './renderProduct.js';
+import './renderProduct.js';
 import {displayProduct} from './catalog.js';
-import {} from './order.js';
-import {} from './promotion.js';
-import {promisedRecommendations, promisedProducts, promisedPromotions} from "./getJson.js";
+import './order.js';
+import './promotion.js';
+import {promisedProducts, promisedPromotions, promisedRecommendations} from "./getJson.js";
 import {routing} from "./routing.js";
 import {clearMain, MAIN} from "./renderHelp.js";
 import {nextSlide, previousSlide, startAnimation} from "./scroller.js";
