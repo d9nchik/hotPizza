@@ -1,0 +1,25 @@
+{
+  "name": "hotPizza",
+  "version": "1.0.0",
+  "description": "Attempt to learn Classes/Prototypes, closures, modules, fetch, Promises, async/await ## Preview [![Site preview](https://lh6.googleusercontent.com/dqQI89EIEKspEeV3g7oFrMqBDS9A0b335ZPoE4mZMze0Mq1ohUVb6b9nH3WUexnbP_Yta7zIMEe-Pr_mmKM=w1848-h979)](https://d9nchik.github.io/hotPizza)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d9nchik/hotPizza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/d9nchik/hotPizza/issues"
+  },
+  "homepage": "https://github.com/d9nchik/hotPizza#readme",
+  "devDependencies": {
+    "webpack": "^5.9.0",
+    "webpack-cli": "^4.2.0"
+  }
+}

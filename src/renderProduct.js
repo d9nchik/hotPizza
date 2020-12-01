@@ -2,7 +2,7 @@ import {CART} from './cart.js';
 import {promisedIngredients, promisedProducts} from "./getJson.js";
 import {routing} from "./routing.js";
 
-import {MAIN, clearMain} from './renderHelp.js'
+import {clearMain, MAIN} from './renderHelp.js'
 
 promisedProducts.then((products) => {
     for (const product of products) {
