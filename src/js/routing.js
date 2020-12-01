@@ -1,9 +1,10 @@
 const DEFAULT_PATH = '';
 
 class Router {
-    links = {};
+
 
     constructor() {
+        this.links = {};
         window.onhashchange = () => {
             this.refresh();
         }

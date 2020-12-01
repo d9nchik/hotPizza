@@ -1,11 +1,11 @@
-import './renderProduct.js';
-import {displayProduct} from './catalog.js';
-import './order.js';
-import './promotion.js';
-import {promisedProducts, promisedPromotions, promisedRecommendations} from "./getJson.js";
-import {routing} from "./routing.js";
-import {clearMain, MAIN} from "./renderHelp.js";
-import {nextSlide, previousSlide, startAnimation} from "./scroller.js";
+import './js/renderProduct.js';
+import {displayProduct} from './js/catalog.js';
+import './js/order.js';
+import './js/promotion.js';
+import {promisedProducts, promisedPromotions, promisedRecommendations} from "./js/getJson.js";
+import {routing} from "./js/routing.js";
+import {clearMain, MAIN} from "./js/renderHelp.js";
+import {nextSlide, previousSlide, startAnimation} from "./js/scroller.js";
 
 console.log('Hello world');
 promisedPromotions.then(promisedPromotions => {
