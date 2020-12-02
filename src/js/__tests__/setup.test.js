@@ -1,0 +1,6 @@
+(function () {
+    document.body.innerHTML = `<div>
+<header><a id="cart"><span id="numberOfCartItems">00</span></a></nav></header>
+<main></main>
+</div>`;
+})();
