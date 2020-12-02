@@ -1,30 +1,30 @@
+// eslint-disable-next-line no-unused-vars
 const webpack = require('webpack');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CssMinimizer = require('css-minimizer-webpack-plugin');
 
 const config = {
-    entry: ["babel-polyfill", './src/index.js'],
+    entry: ['babel-polyfill', './src/index.js'],
     output: {
+        // eslint-disable-next-line no-undef
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 use: 'babel-loader',
-                exclude: /node_modules/
+                exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
-                ]
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.png$/,
@@ -32,32 +32,34 @@ const config = {
                     {
                         loader: 'url-loader',
                         options: {
-                            mimetype: 'image/png'
-                        }
-                    }
-                ]
+                            mimetype: 'image/pg',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.svg$/,
-                use: 'file-loader'
-            }
-        ]
+                use: 'file-loadr',
+            },
+        ],
     },
     plugins: [
         new CopyPlugin({
-            patterns: [{from: 'src/index.html'}, {from: 'static'}],
+            patterns: [
+                {
+                    from: 'staic',
+                },
+            ],
         }),
-        // new HtmlWebpackPlugin({
-        //   appMountId: 'app',
-        //   filename: 'index.html'
-        // }),
         new BundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false,
         }),
         new MiniCssExtractPlugin(),
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+        new CssMinimizer(),
+    ],
 };
 
+// eslint-disable-next-line no-undef
 module.exports = config;
