@@ -1,11 +1,16 @@
+import './main.css';
 import './js/renderProduct.js';
-import {displayProduct} from './js/catalog.js';
+import { displayProduct } from './js/catalog.js';
 import './js/order.js';
 import './js/promotion.js';
-import {promisedProducts, promisedPromotions, promisedRecommendations} from "./js/getJson.js";
-import {routing} from "./js/routing.js";
-import {clearMain, MAIN} from "./js/renderHelp.js";
-import {nextSlide, previousSlide, startAnimation} from "./js/scroller.js";
+import {
+    promisedProducts,
+    promisedPromotions,
+    promisedRecommendations,
+} from './js/getJson.js';
+import { routing } from './js/routing.js';
+import { clearMain, MAIN } from './js/renderHelp.js';
+import { nextSlide, previousSlide, startAnimation } from './js/scroller.js';
 
 console.log('Hello world');
 promisedPromotions.then(promisedPromotions => {
@@ -33,7 +38,8 @@ promisedPromotions.then(promisedPromotions => {
             var promotionElement = document.createElement('div');
             promotionElement.setAttribute('class', 'scroll-promotion');
             scrollPromotions.appendChild(promotionElement);
-            promotionElement.onclick = () => routing.openLink(`action/${promotion.url}`);
+            promotionElement.onclick = () =>
+                routing.openLink(`action/${promotion.url}`);
 
             var img = document.createElement('img');
             promotionElement.appendChild(img);
@@ -62,7 +68,11 @@ promisedPromotions.then(promisedPromotions => {
 
         showInterestingItems(bigContainer);
 
-        startAnimation(promisedPromotions.length, scrollPromotions, `width: ${100 * promisedPromotions.length}%;`);
+        startAnimation(
+            promisedPromotions.length,
+            scrollPromotions,
+            `width: ${100 * promisedPromotions.length}%;`
+        );
     }
 });
 

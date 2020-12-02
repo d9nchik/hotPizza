@@ -171,5 +171,3 @@ promisedProducts.then((products) => {
     }
   }
 });
-
-
