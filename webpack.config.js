@@ -47,7 +47,7 @@ const config = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: 'staic',
+                    from: 'static',
                 },
             ],
         }),
