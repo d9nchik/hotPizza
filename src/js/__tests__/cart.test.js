@@ -7,10 +7,6 @@ beforeEach(() => {
     CART.clearCart();
 });
 
-require('babel-polyfill');
-
-jest.mock('../getJson');
-
 test('test adding ability', () => {
     expect(CART.calculateNumberOfItemsInCart()).toBe(0);
     CART.addToCart('banana', 1);
@@ -57,7 +53,6 @@ test('test show', () => {
 });
 
 test('cart display', () => {
-    Element.prototype.scrollTo = () => {};
     routing.openLink('cart');
     expect(MAIN.innerHTML).toBe('');
     CART.addToCart('peperoni_bluz', 1);
