@@ -1,11 +1,9 @@
 import './setup.test';
 import { CART } from '../cart';
+import { routing } from '../routing';
+import { MAIN } from '../renderHelp';
 
 beforeEach(() => {
-    document.body.innerHTML = `<div>
-<header><a id="cart"><span id="numberOfCartItems">00</span></a></nav></header>
-<main></main>
-</div>`;
     CART.clearCart();
 });
 
@@ -50,4 +48,20 @@ test('test number of items', () => {
     expect(CART.calculateNumberOfItemsInCart()).toBe(0);
     CART.addToCart('banana', 1);
     expect(CART.calculateNumberOfItemsInCart()).toBe(1);
+});
+
+test('test show', () => {
+    expect(document.getElementById('numberOfCartItems').innerHTML).toBe('0');
+    CART.addToCart('banana', 1);
+    expect(document.getElementById('numberOfCartItems').innerHTML).toBe('1');
+});
+
+test('cart display', () => {
+    Element.prototype.scrollTo = () => {};
+    routing.openLink('cart');
+    expect(MAIN.innerHTML).toBe('');
+    CART.addToCart('peperoni_bluz', 1);
+    routing.openLink('cart');
+    document.getElementsByTagName('button')[0].onclick();
+    expect(CART.isEmpty()).toBeTruthy();
 });
