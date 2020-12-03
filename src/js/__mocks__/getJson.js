@@ -10,20 +10,20 @@ async function getProducts() {
                 'img/pizza/classic/peperoni_bluz_full.jpg',
             ],
             weight: 296,
-            relatedProductIds: [15, 9, 1, 8, 2],
+            relatedProductIds: [1],
             categoryId: 0,
         },
         {
             url: 'texas',
             productName: 'Техас',
-            ingredients: [5, 6, 7, 8, 1, 4],
+            ingredients: [1, 2, 3, 4, 5],
             price: 92.99,
             images: [
                 'img/pizza/classic/texas_short.jpg',
                 'img/pizza/classic/texas_full.jpg',
             ],
             weight: 378,
-            relatedProductIds: [7, 11, 9, 14, 10],
+            relatedProductIds: [0],
             categoryId: 0,
         },
     ];

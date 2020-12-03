@@ -49,6 +49,7 @@
   },
   "dependencies": {
     "babel-plugin-transform-regenerator": "^6.26.0",
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "jquery": "^3.5.1"
   }
 }
