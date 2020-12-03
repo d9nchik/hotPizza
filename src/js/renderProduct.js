@@ -4,7 +4,7 @@ import { routing } from './routing.js';
 
 import { clearMain, MAIN } from './renderHelp.js';
 import $ from 'jquery';
-import './bootstrap.bundle';
+import '../bootstrap/bootstrap.bundle';
 
 promisedProducts.then(products => {
     for (const product of products) {
