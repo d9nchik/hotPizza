@@ -1,9 +1,8 @@
-import {CART} from "./cart.js";
-import {routing} from "./routing.js";
-import {promisedProducts} from "./getJson.js";
-import {clearMain, MAIN} from "./renderHelp.js";
-import {sendData} from "./sendData.js";
-
+import { CART } from './cart.js';
+import { routing } from './routing.js';
+import { promisedProducts } from './getJson.js';
+import { clearMain, MAIN } from './renderHelp.js';
+import { sendData } from './sendData.js';
 
 promisedProducts.then(promisedProducts => {
     routing.addLink('order', makeOrder);
@@ -28,14 +27,20 @@ promisedProducts.then(promisedProducts => {
         row.appendChild(yourCart);
 
         var titleOfCart = document.createElement('h4');
-        titleOfCart.setAttribute('class', 'd-flex justify-content-between align-items-center mb-3');
+        titleOfCart.setAttribute(
+            'class',
+            'd-flex justify-content-between align-items-center mb-3'
+        );
         yourCart.appendChild(titleOfCart);
         var spanTitle = document.createElement('span');
         spanTitle.setAttribute('class', 'text-muted');
         spanTitle.textContent = 'Ваша корзина';
         titleOfCart.appendChild(spanTitle);
         var numberOfItemsSpan = document.createElement('span');
-        numberOfItemsSpan.setAttribute('class', 'badge badge-secondary badge-pill');
+        numberOfItemsSpan.setAttribute(
+            'class',
+            'badge badge-secondary badge-pill'
+        );
         numberOfItemsSpan.textContent = CART.calculateNumberOfItemsInCart();
         titleOfCart.appendChild(numberOfItemsSpan);
 
@@ -43,36 +48,46 @@ promisedProducts.then(promisedProducts => {
         list.setAttribute('class', 'list-group mb-3');
         yourCart.appendChild(list);
         var totalPrice = 0;
-        promisedProducts.filter(product => Object.keys(CART).includes(product.url)).forEach(product => {
-            if (!availableKeys.includes(product.url)) {
-                return;
-            }
-            var li = document.createElement('li');
-            li.setAttribute('class', 'list-group-item d-flex justify-content-between lh-condensed');
-            list.appendChild(li);
+        promisedProducts
+            .filter(product => Object.keys(CART).includes(product.url))
+            .forEach(product => {
+                if (!availableKeys.includes(product.url)) {
+                    return;
+                }
+                var li = document.createElement('li');
+                li.setAttribute(
+                    'class',
+                    'list-group-item d-flex justify-content-between lh-condensed'
+                );
+                list.appendChild(li);
 
-            var div = document.createElement('div');
-            li.appendChild(div);
-            var h6 = document.createElement('h6');
-            div.appendChild(h6);
-            h6.setAttribute('class', 'my-0');
-            h6.textContent = product.productName;
-            var small = document.createElement('small');
-            div.appendChild(small);
-            small.setAttribute('class', 'text-muted');
-            small.textContent = `${CART[product.url]} X ${product.price}грн.`;
+                var div = document.createElement('div');
+                li.appendChild(div);
+                var h6 = document.createElement('h6');
+                div.appendChild(h6);
+                h6.setAttribute('class', 'my-0');
+                h6.textContent = product.productName;
+                var small = document.createElement('small');
+                div.appendChild(small);
+                small.setAttribute('class', 'text-muted');
+                small.textContent = `${CART[product.url]} X ${
+                    product.price
+                }грн.`;
 
-            const itemsPrice = CART[product.url] * product.price;
-            var span = document.createElement('span');
-            li.appendChild(span);
-            span.setAttribute('class', 'text-muted');
-            span.textContent = `${itemsPrice.toFixed(2)} грн.`;
-            totalPrice += itemsPrice;
-        });
+                const itemsPrice = CART[product.url] * product.price;
+                var span = document.createElement('span');
+                li.appendChild(span);
+                span.setAttribute('class', 'text-muted');
+                span.textContent = `${itemsPrice.toFixed(2)} грн.`;
+                totalPrice += itemsPrice;
+            });
 
         var totalListItem = document.createElement('li');
         list.appendChild(totalListItem);
-        totalListItem.setAttribute('class', 'list-group-item d-flex justify-content-between');
+        totalListItem.setAttribute(
+            'class',
+            'list-group-item d-flex justify-content-between'
+        );
         var totalListItemSpan = document.createElement('span');
         totalListItem.appendChild(totalListItemSpan);
         totalListItemSpan.textContent = 'В сумме(грн):';
@@ -90,7 +105,8 @@ function generateOrderField(row) {
     var form = document.createElement('div');
     row.appendChild(form);
     form.setAttribute('class', 'col-md-8 order-md-1 mb-1');
-    form.innerHTML = '      <h4 class="mb-3">Платежный адрес</h4>\n' +
+    form.innerHTML =
+        '      <h4 class="mb-3">Платежный адрес</h4>\n' +
         '      <form class="needs-validation" novalidate="">\n' +
         '        <div class="row">\n' +
         '          <div class="col-md-6 mb-3">\n' +
@@ -225,17 +241,21 @@ function generateOrderField(row) {
         '      </form>\n' +
         '</div>';
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation')
+    var forms = document.getElementsByClassName('needs-validation');
 
     // Loop over them and prevent submission
     Array.prototype.filter.call(forms, function (form) {
-        form.addEventListener('submit', function (event) {
-            if (form.checkValidity() === false) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-            form.classList.add('was-validated')
-        }, false)
+        form.addEventListener(
+            'submit',
+            function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            },
+            false
+        );
     });
 
     const postIndex = document.getElementById('zip');
@@ -274,8 +294,12 @@ function generateOrderField(row) {
 
     function checkTimeDate() {
         if (!orderDateCheck(date.value, time.value)) {
-            date.setCustomValidity('На доставку должно быть выделено минимум 3 часа');
-            time.setCustomValidity('На доставку должно быть выделено минимум 3 часа');
+            date.setCustomValidity(
+                'На доставку должно быть выделено минимум 3 часа'
+            );
+            time.setCustomValidity(
+                'На доставку должно быть выделено минимум 3 часа'
+            );
         } else {
             date.setCustomValidity('');
             time.setCustomValidity('');
@@ -287,7 +311,7 @@ function generateOrderField(row) {
     date.addEventListener('input', checkTimeDate);
     time.addEventListener('input', checkTimeDate);
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', event => {
         event.preventDefault();
         event.stopPropagation();
         var orderDetails = {
@@ -300,14 +324,17 @@ function generateOrderField(row) {
             phone: document.getElementById('phone').value,
             date: document.getElementById('date').value,
             time: document.getElementById('time').value,
-            'same-address': document.querySelector('#same-address:checked') != null,
+            'same-address':
+                document.querySelector('#same-address:checked') != null,
             'save-info': document.querySelector('#save-info:checked') != null,
-            'paymentMethod': document.querySelector('input[name="paymentMethod"]:checked').value,
+            paymentMethod: document.querySelector(
+                'input[name="paymentMethod"]:checked'
+            ).value,
             'cc-name': document.getElementById('cc-name').value,
             'cc-number': document.getElementById('cc-number').value,
             'cc-expiration': document.getElementById('cc-expiration').value,
             'cc-cvv': document.getElementById('cc-cvv').value,
-        }
+        };
         makeOrder(orderDetails);
     });
 
@@ -332,10 +359,10 @@ function generateOrderField(row) {
         '    </div>\n' +
         '  </div>\n' +
         '</div>';
-    MAIN.appendChild(modalDiv)
+    MAIN.appendChild(modalDiv);
 }
 
-function luna(cardNumber) {
+export function luna(cardNumber) {
     if (cardNumber.length !== 16) {
         return false;
     }
@@ -353,7 +380,7 @@ function luna(cardNumber) {
     return sum % 10 === 0;
 }
 
-function checkExpireDate(expireDate) {
+export function checkExpireDate(expireDate) {
     var [month, year] = expireDate.split('/');
     month = Number(month);
     year = Number(year);
@@ -364,10 +391,13 @@ function checkExpireDate(expireDate) {
     return Date.now() < dateCheck.getTime();
 }
 
-function orderDateCheck(dateValue, timeValue) {
+export function orderDateCheck(dateValue, timeValue) {
     var [year, month, day] = dateValue.split('-');
     var [hours, minute] = timeValue.split(':');
-    return Date.now() + 3 * 60 * 60 * 1_000 <= new Date(year, month - 1, day, hours, minute);
+    return (
+        Date.now() + 3 * 60 * 60 * 1_000 <=
+        new Date(year, month - 1, day, hours, minute)
+    );
 }
 
 function makeOrder(data) {
@@ -379,8 +409,7 @@ function makeOrder(data) {
 
     function ifOk(uniqueID) {
         CART.clearCart();
-        promisedProducts.then((promisedProducts) => {
-
+        promisedProducts.then(promisedProducts => {
             routing.addLink(`order/${uniqueID}`, orderDetails);
 
             function orderDetails() {
@@ -398,14 +427,20 @@ function makeOrder(data) {
                 row.appendChild(yourCart);
 
                 var titleOfCart = document.createElement('h4');
-                titleOfCart.setAttribute('class', 'd-flex justify-content-between align-items-center mb-3');
+                titleOfCart.setAttribute(
+                    'class',
+                    'd-flex justify-content-between align-items-center mb-3'
+                );
                 yourCart.appendChild(titleOfCart);
                 var spanTitle = document.createElement('span');
                 spanTitle.setAttribute('class', 'text-muted');
                 spanTitle.textContent = 'Ваш заказ';
                 titleOfCart.appendChild(spanTitle);
                 var numberOfItemsSpan = document.createElement('span');
-                numberOfItemsSpan.setAttribute('class', 'badge badge-secondary badge-pill');
+                numberOfItemsSpan.setAttribute(
+                    'class',
+                    'badge badge-secondary badge-pill'
+                );
                 numberOfItemsSpan.textContent = Object.keys(data.cart).length;
                 titleOfCart.appendChild(numberOfItemsSpan);
 
@@ -413,34 +448,46 @@ function makeOrder(data) {
                 list.setAttribute('class', 'list-group mb-3');
                 yourCart.appendChild(list);
                 var totalPrice = 0;
-                promisedProducts.filter(product => Object.keys(data.cart).includes(product.url)).forEach(product => {
+                promisedProducts
+                    .filter(product =>
+                        Object.keys(data.cart).includes(product.url)
+                    )
+                    .forEach(product => {
+                        var li = document.createElement('li');
+                        li.setAttribute(
+                            'class',
+                            'list-group-item d-flex justify-content-between lh-condensed'
+                        );
+                        list.appendChild(li);
 
-                    var li = document.createElement('li');
-                    li.setAttribute('class', 'list-group-item d-flex justify-content-between lh-condensed');
-                    list.appendChild(li);
+                        var div = document.createElement('div');
+                        li.appendChild(div);
+                        var h6 = document.createElement('h6');
+                        div.appendChild(h6);
+                        h6.setAttribute('class', 'my-0');
+                        h6.textContent = product.productName;
+                        var small = document.createElement('small');
+                        div.appendChild(small);
+                        small.setAttribute('class', 'text-muted');
+                        small.textContent = `${data.cart[product.url]} X ${
+                            product.price
+                        }грн.`;
 
-                    var div = document.createElement('div');
-                    li.appendChild(div);
-                    var h6 = document.createElement('h6');
-                    div.appendChild(h6);
-                    h6.setAttribute('class', 'my-0');
-                    h6.textContent = product.productName;
-                    var small = document.createElement('small');
-                    div.appendChild(small);
-                    small.setAttribute('class', 'text-muted');
-                    small.textContent = `${data.cart[product.url]} X ${product.price}грн.`;
-
-                    const itemsPrice = data.cart[product.url] * product.price;
-                    var span = document.createElement('span');
-                    li.appendChild(span);
-                    span.setAttribute('class', 'text-muted');
-                    span.textContent = `${itemsPrice.toFixed(2)} грн.`;
-                    totalPrice += itemsPrice;
-                });
+                        const itemsPrice =
+                            data.cart[product.url] * product.price;
+                        var span = document.createElement('span');
+                        li.appendChild(span);
+                        span.setAttribute('class', 'text-muted');
+                        span.textContent = `${itemsPrice.toFixed(2)} грн.`;
+                        totalPrice += itemsPrice;
+                    });
 
                 var totalListItem = document.createElement('li');
                 list.appendChild(totalListItem);
-                totalListItem.setAttribute('class', 'list-group-item d-flex justify-content-between');
+                totalListItem.setAttribute(
+                    'class',
+                    'list-group-item d-flex justify-content-between'
+                );
                 var totalListItemSpan = document.createElement('span');
                 totalListItem.appendChild(totalListItemSpan);
                 totalListItemSpan.textContent = 'В сумме(грн):';
@@ -448,7 +495,6 @@ function makeOrder(data) {
                 totalListItem.appendChild(totalListItemStrong);
                 totalListItemStrong.textContent = totalPrice.toFixed(2);
             }
-
         });
         routing.openLink(`order/${uniqueID}`);
     }
