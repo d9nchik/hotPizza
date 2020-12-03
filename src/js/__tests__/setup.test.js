@@ -9,3 +9,6 @@ require('babel-polyfill');
 })();
 
 Element.prototype.scrollTo = () => {};
+test('test load', () => {
+    expect(true).toBeTruthy();
+});
