@@ -88,7 +88,7 @@ async function getIngredients() {
 }
 
 async function getRecommendation() {
-    return [2, 1, 6];
+    return [0, 1];
 }
 
 async function getPromotions() {
