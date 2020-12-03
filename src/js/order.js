@@ -395,7 +395,7 @@ export function orderDateCheck(dateValue, timeValue) {
     var [year, month, day] = dateValue.split('-');
     var [hours, minute] = timeValue.split(':');
     return (
-        Date.now() + 3 * 60 * 60 * 1_000 <=
+        Date.now() + 3 * 60 * 60 * 1000 <=
         new Date(year, month - 1, day, hours, minute)
     );
 }
@@ -500,6 +500,7 @@ function makeOrder(data) {
     }
 
     function troubles() {
+        // eslint-disable-next-line no-undef
         $('#exampleModal').modal('show');
     }
 }
