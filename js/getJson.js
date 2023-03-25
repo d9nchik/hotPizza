@@ -1,5 +1,5 @@
 const obj = (async () => {
-  const data = await fetch('/data.json');
+  const data = await fetch('data.json');
   const res = await data.json();
   return res;
 })();
