@@ -1,10 +1,14 @@
-const SERVER_IP = 'https://hotpizza.ml';
-export const promisedProducts = getObj(`${SERVER_IP}/getProducts`);
-export const promisedProductsCategories = getObj(`${SERVER_IP}/getCategories`);
-export const promisedIngredients = getObj(`${SERVER_IP}/getIngredients`);
-export const promisedRecommendations = getObj(`${SERVER_IP}/getRecommended`);
-export const promisedPromotions = getObj(`${SERVER_IP}/getPromotions`);
+const obj = (async () => {
+  const data = await fetch('/data.json');
+  const res = await data.json();
+  return res;
+})();
 
-function getObj(url) {
-    return fetch(url).then(data => data.json());
-}
+export const promisedProducts = (async () => (await obj)['products'])();
+
+export const promisedProductsCategories = (async () =>
+  (await obj)['productsCategories'])();
+export const promisedIngredients = (async () => (await obj)['ingredients'])();
+export const promisedRecommendations = (async () =>
+  (await obj)['recommendations'])();
+export const promisedPromotions = (async () => (await obj)['promotions'])();
